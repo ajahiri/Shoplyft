@@ -4,9 +4,11 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 // Import needed templates
 import '../../ui/layouts/body/body.js';
 import '../../ui/pages/home/home.js';
+import '../../ui/pages/not-found/not-found.js';
+
+// Login/Signup
 import '../../ui/pages/login/login.js';
 import '../../ui/pages/signup/signup.js';
-import '../../ui/pages/not-found/not-found.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {

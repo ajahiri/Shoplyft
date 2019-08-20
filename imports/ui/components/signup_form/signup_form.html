@@ -1,7 +1,11 @@
 <template name='signup_form'>
-  <div class="row">
-    <div class="top-padded-login col s12 m10 offset-m2 row z-depth-3 hoverable">
-      <form class="padded-login">
+  <div class="row login-margin">
+    {{#if currentUser}}
+    <h5>Hi {{currentUser.username}}, you're already logged in!</h5>
+    <button id="logOutButton" class="row col s12 blue waves-effect waves-light btn">Log Out</button>
+    {{else}}
+    <div class="col s12 m10 offset-m2 row z-depth-3 hoverable">
+      <form id='signup_form' class="padded-login">
         <h5 class="blue-text center">Sign Up</h5>
         <div class="row">
           <div class="input-field col s12">
@@ -23,12 +27,13 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="conf-password" type="password" class="validate">
-            <label for="conf-password">Confirm Password</label>
+            <input id="confPassword" type="password" class="validate">
+            <label for="confPassword">Confirm Password</label>
           </div>
         </div>
-        <a class="row col s12 blue waves-effect waves-light btn">Sign Up</a>
+        <button type="submit" form="signup_form" class="row col s12 blue waves-effect waves-light btn">Sign Up</button>
       </form>
     </div>
+    {{/if}}
   </div>
 </template>

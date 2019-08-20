@@ -25,3 +25,7 @@ meteortesting:mocha               # A package for writing and running your meteo
 johanbrook:publication-collector  # Test a Meteor publication by collecting its output
 meteortoys:allthings
 materialize:materialize
+accounts-password
+accounts-base
+insecure
+arillo:flow-router-helpers
