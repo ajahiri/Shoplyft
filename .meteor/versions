@@ -32,7 +32,7 @@ ejson@1.1.0
 email@1.2.3
 es5-shim@4.8.0
 fetch@0.1.1
-fourseven:scss@4.5.4
+fourseven:scss@4.12.0
 geojson-utils@1.0.10
 hot-code-push@1.0.4
 html-tools@1.0.11
@@ -51,7 +51,6 @@ livedata@1.0.18
 lmieulet:meteor-coverage@1.1.4
 localstorage@1.2.0
 logging@1.1.20
-materialize:materialize@0.100.2
 meteor@1.9.3
 meteor-base@1.4.0
 meteorhacks:picker@1.0.3
