@@ -1,0 +1,28 @@
+<template name='login_form'>
+  <div class="row login-margin">
+    {{#if currentUser}}
+    <h5>Hi {{currentUser.username}}, you're already logged in!</h5>
+    <button id="logOutButton" class="row col s12 blue waves-effect waves-light btn">Log Out</button>
+    {{else}}
+    <div class="col s12 m10 offset-m2 row z-depth-3 hoverable">
+      <form id="login-form" class="padded-login">
+        <h5 class="blue-text center">Login</h5>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="username" type="text" class="validate">
+            <label for="username">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <button type="submit" form="login-form" class="row col s12 blue lighten-5 black-text waves-effect waves-light btn">Login</button>
+        <a href="{{pathFor 'signup'}}" class="row col s12 blue waves-effect waves-light btn">New Account</a>
+      </form>
+    </div>
+    {{/if}}
+  </div>
+</template>
