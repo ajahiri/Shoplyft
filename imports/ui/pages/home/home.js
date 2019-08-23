@@ -1,4 +1,4 @@
 import './home.html';
+import '../../components/promo_text/promo_text.js';
 
-import '../../components/hello/hello.js';
-import '../../components/info/info.js';
+
