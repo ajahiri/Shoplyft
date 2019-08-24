@@ -1,9 +1,10 @@
 <template name="navigation">
   <nav class="blue">
     <div class="nav-wrapper">
-      <!-- Enable when we have a logo to display => <a href="#!" class="brand-logo">Logo</a> -->
+    <a href="#!" class="brand-logo center"><img src="/img/logo-simple.JPG" width="250" height="auto"></a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons fa fa-bars"></i></a>
       <ul class="right hide-on-med-and-down">
+        <li><a class="blue waves-effect waves-light btn">search page</a></li>
         <li><a href="{{pathFor '/'}}">Home</a></li>
         <li><a href="{{pathFor 'login'}}">Login</a></li>
         <li><a href="{{pathFor 'signup'}}">Signup</a></li>
