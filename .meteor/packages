@@ -29,3 +29,7 @@ accounts-base
 insecure
 arillo:flow-router-helpers
 fourseven:scss
+easy:search
+easysearch:elasticsearch
+easysearch:autosuggest
+fortawesome:fontawesome
