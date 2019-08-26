@@ -26,7 +26,6 @@ johanbrook:publication-collector  # Test a Meteor publication by collecting its 
 meteortoys:allthings
 accounts-password
 accounts-base
-insecure
 arillo:flow-router-helpers
 fourseven:scss
 easy:search
