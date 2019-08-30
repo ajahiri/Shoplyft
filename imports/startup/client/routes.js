@@ -13,6 +13,7 @@ import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/login/login.js';
 import '../../ui/pages/signup/signup.js';
 
+// Admin Homepage
 import '../../ui/pages/admin-home/admin-home.js';
 
 // Set up all routes in the app
