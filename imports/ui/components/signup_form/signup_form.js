@@ -32,6 +32,7 @@ Template.signup_form.events({
           }
         });
       console.log('USER CREATED!');
+      M.toast({html: 'New Account Created successfully'})
     } catch (e) {
       console.log(e);
     }
@@ -39,5 +40,7 @@ Template.signup_form.events({
   },
   'click #logOutButton'(event) {
     Meteor.logout();
+    M.toast({html: 'You have successfully logged out'})
+
   }
 });
