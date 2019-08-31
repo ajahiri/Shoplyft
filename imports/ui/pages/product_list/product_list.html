@@ -1,0 +1,83 @@
+<body>
+    {{>header}}
+    {{>search_bar}}
+    {{>all_product_container}}
+</body>
+
+<template id="header" name="header">
+  <div class="header">
+    <div class="logo">
+          <img src="/logo.jpg">
+    </div>
+    {{>branch_dropdown}}
+  </div>
+</template>
+
+<template name="search_bar">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <div class="search_bar">
+        <i class="red-text material-icons prefix">search</i>
+        <input class = "search_bar_box" type="text" placeholder="Search.." >
+    </div>
+</template>
+
+<template id="branch_dropdown" name="branch_dropdown">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <select class="branch_list">
+          <option value="" disabled selected>Select Branch</option>
+          <option value="1">Ashfield</option>
+          <option value="2">Burwood</option>
+          <option value="3">Auburn</option>
+          <option value="4">Hornsby</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="product" name = "product">
+  <div class="container">
+    <div class="single_product">
+        <div class="single_product_image">
+             <img src="image.jpg">
+        </div>
+        <div class="product_title">
+             <h1>product_title</h1>
+         </div>
+         <div class="product_price">
+              <p class="price">$price</p>
+         </div>
+         <div class="Add_to_Cart_Btn">
+              <p><button>Add to Cart</button></p>
+        </div>
+    </div>
+  </div>
+</template>
+
+<template id="all_product_container" name="all_product_container">
+  <div class="all_product_container">
+     {{>product_row}}
+  </div>
+</template>
+
+<template id="product_row" name="product_row">
+  <section class="product_row_section">
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+    {{>product}}
+  </section>
+</template>
