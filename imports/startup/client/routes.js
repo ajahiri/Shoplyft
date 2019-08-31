@@ -16,6 +16,9 @@ import '../../ui/pages/signup/signup.js';
 // Admin Homepage
 import '../../ui/pages/admin-home/admin-home.js';
 
+//Product page list view
+import '../../ui/pages/product_list/product_list.js';
+
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',
@@ -50,3 +53,10 @@ FlowRouter.notFound = {
     BlazeLayout.render('App_body', { main: 'App_notFound' });
   },
 };
+
+FlowRouter.route('/product_listview', {
+  name: 'product_listview',
+  action() {
+    BlazeLayout.render('product_listview');
+  },
+});
