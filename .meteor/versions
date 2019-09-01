@@ -1,5 +1,7 @@
 accounts-base@1.4.4
 accounts-password@1.5.1
+alanning:roles@1.2.16
+aldeed:simple-schema@1.5.4
 allow-deny@1.1.0
 arillo:flow-router-helpers@0.5.2
 autoupdate@1.6.0
@@ -58,6 +60,7 @@ livedata@1.0.18
 lmieulet:meteor-coverage@1.1.4
 localstorage@1.2.0
 logging@1.1.20
+mdg:validation-error@0.2.0
 meteor@1.9.3
 meteor-base@1.4.0
 meteorhacks:picker@1.0.3

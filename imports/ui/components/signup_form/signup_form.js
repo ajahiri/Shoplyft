@@ -1,4 +1,5 @@
 import './signup_form.html';
+import { checkDetails } from './passwordValidator.js';
 
 Template.signup_form.events({
   'submit #signup_form'(event) {
@@ -13,6 +14,16 @@ Template.signup_form.events({
     const confPassword = target.confPassword.value;
 
     try {
+      checkDetails(username, password, confPassword); //Imported function
+      if (!email) {
+        throw new Error("Please enter a valid email.");
+      }
+    } catch (e){
+      M.toast({html: e});
+      return;
+    }
+
+    try {
       if (password != confPassword) {
         throw new Error("Passwords don't match!");
       }
@@ -21,26 +32,23 @@ Template.signup_form.events({
             username: username,
             email: email,
             password: password,
-            profile: {
-              role:'customer'
-            }
           },
         function (error) {
           if (error) {
-            console.log(error.reason);
-            return;
+            M.toast({html: error.reason});
           }
         });
-      console.log('USER CREATED!');
-      M.toast({html: 'New Account Created successfully'})
     } catch (e) {
-      console.log(e);
+      M.toast({html: e});
     }
 
+    Accounts.onLogin(function() {
+      FlowRouter.go('App.home');
+      M.toast({html: 'Successfully signed up!'});
+    });
   },
   'click #logOutButton'(event) {
     Meteor.logout();
-    M.toast({html: 'You have successfully logged out'})
-
+    M.toast({html: 'You have successfully logged out'});
   }
 });

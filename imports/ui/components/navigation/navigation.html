@@ -1,7 +1,4 @@
 <template name="navigation">
-    <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    </head>
   <nav class="white">
     <div class="nav-wrapper">
     <a href="#!" class="brand-logo center"><img src="/img/logo-simple.JPG" width="250" height="auto"></a>
@@ -11,13 +8,14 @@
         <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">shopping_cart</i>My Cart</a></li>
       </ul>
       <ul class="left hide-on-med-and-down">
-        <li><a class="blue-text" href="{{pathFor 'login'}}"><i class="material-icons left">person</i>Login</a></li>
-        <li><a class="blue-text" href="{{pathFor 'signup'}}"><i class="material-icons left">person_add</i>Signup</a></li>
-        <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">account_circle</i>My Account</a></li>
+        {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor 'login'}}"><i class="material-icons left">person</i>Login</a></li>{{/unless}}
+        {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor 'signup'}}"><i class="material-icons left">person_add</i>Signup</a></li>{{/unless}}
+        {{#if currentUser}}<li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">account_circle</i>My Account</a></li>{{/if}}
+        {{#if currentUser}}<li><a class="blue-text" id="logOutButton"><i class="material-icons left">exit_to_app</i>Log Out</a></li>{{/if}}
         </ul>
     </div>
   </nav>
-  
+
   <ul class="sidenav" id="mobile-demo">
     <li><a href="{{pathFor '/'}}">Home</a></li>
     <li><a href="{{pathFor 'login'}}">Login</a></li>
