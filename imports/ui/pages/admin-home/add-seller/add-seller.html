@@ -1,0 +1,36 @@
+<template name="addSeller">
+  {{> navigation}}
+  <div class="container">
+    <div class="row col s12">
+      <h2>Add Seller</h2>
+      <p>Search for a user to promote to seller permission:</p>
+    </div>
+    <div class="row">
+      <form id="userSearchForm" class="col s12">
+        <div class="input-field">
+          <i class="material-icons prefix">search</i>
+          <input type="text" id="username">
+          <label for="user-search">Search</label>
+        </div>
+      </form>
+    </div>
+    <div class="row col s12">
+      <table class="highlight">
+        <thead>
+          <tr>
+              <th>Username</th>
+              <th>Branch</th>
+              <th>Role</th>
+              <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each usersFound}}
+            {{> userTableEntry}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>

@@ -8,6 +8,12 @@ Meteor.users.deny({
   update() { return true; }
 });
 
+//Add all users to default "customer" role on creation
+Accounts.onCreateUser((options, user) => {
+  Roles.addUsersToRoles(user._id, 'customer');
+  return user;
+});
+
 // Ensuring every user has an email address, should be in server-side code
 Accounts.validateNewUser((user) => {
   new SimpleSchema({

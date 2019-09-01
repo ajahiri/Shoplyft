@@ -1,0 +1,14 @@
+<template name="userTableEntry">
+  <tr>
+    <td>{{username}}</td>
+    <td>{{branch}}</td>
+    <td>{{role}}</td>
+    <td>
+      {{#if isInRole 'seller'}}
+        <a href="" id="demote">Demote</a>
+      {{else}}
+        <a href="" id="promote">Promote</a>
+      {{/if}}
+    </td>
+  </tr>
+</template>

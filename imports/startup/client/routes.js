@@ -1,5 +1,6 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+import { Roles } from 'meteor/alanning:roles';
 
 //Global UI Components
 import '../../ui/components/navigation/navigation.js';
@@ -15,19 +16,21 @@ import '../../ui/pages/signup/signup.js';
 
 // Admin Homepage
 import '../../ui/pages/admin-home/admin-home.js';
-  //View Branches
-  import '../../ui/pages/admin-home/view-branches/view-branches.js';
-  //Add/Delete Products
-  import '../../ui/pages/admin-home/+-Products/+-Products.js';
-  //View Customers
-  import '../../ui/pages/admin-home/view-customers/view-customers.js';
+// View Branches
+import '../../ui/pages/admin-home/view-branches/view-branches.js';
+// Add/Delete Products
+import '../../ui/pages/admin-home/+-Products/+-Products.js';
+// View Customers
+import '../../ui/pages/admin-home/view-customers/view-customers.js';
+// Add Sellers
+import '../../ui/pages/admin-home/add-seller/add-seller.js';
 
 // Seller Homepage
 import '../../ui/pages/seller-home/seller-home.js';
-  //Transaction History
-  import '../../ui/pages/seller-home/view-transactions/view-transaction.js';
-  //Update Stock
-  import '../../ui/pages/seller-home/update-stock/update-stock.js';
+// Transaction History
+import '../../ui/pages/seller-home/view-transactions/view-transaction.js';
+// Update Stock
+import '../../ui/pages/seller-home/update-stock/update-stock.js';
 
 
 // Set up all routes in the app
@@ -59,26 +62,33 @@ FlowRouter.route('/admin-home', {
   },
 });
 
-    FlowRouter.route('/admin-home/view-branches', {
-      name: 'App.admin-home.view-branches',
-      action() {
-        BlazeLayout.render('App_body', { main: 'App_adminHome_view-branches' });
-      },
-    });
+FlowRouter.route('/admin-home/view-branches', {
+  name: 'App.admin-home.view-branches',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_adminHome_view-branches' });
+  },
+});
 
-    FlowRouter.route('/admin-home/+-Products', {
-      name: 'App.admin-home.+-Products',
-      action() {
-        BlazeLayout.render('App_body', { main: 'App_adminHome_+-Products' });
-      },
-    });
+FlowRouter.route('/admin-home/+-Products', {
+  name: 'App.admin-home.+-Products',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_adminHome_+-Products' });
+  },
+});
 
-    FlowRouter.route('/admin-home/view-customers', {
-      name: 'App.admin-home.view-customers',
-      action() {
-        BlazeLayout.render('App_body', { main: 'App_adminHome_view-customers' });
-      },
-    });
+FlowRouter.route('/admin-home/view-customers', {
+  name: 'App.admin-home.view-customers',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_adminHome_view-customers' });
+  },
+});
+
+FlowRouter.route('/admin-home/add-seller', {
+  name: 'App.admin-home.add-seller',
+  action() {
+    BlazeLayout.render('App_body', { main: 'addSeller' });
+  },
+});
 
 
 FlowRouter.route('/seller-home', {
@@ -88,19 +98,19 @@ FlowRouter.route('/seller-home', {
   },
 });
 
-    FlowRouter.route('/seller-home/view-transactions', {
-      name: 'App.seller-home.view-transactions',
-      action() {
-        BlazeLayout.render('App_body', { main: 'App_sellerHome_view-transactions' });
-      },
-    });
+FlowRouter.route('/seller-home/view-transactions', {
+  name: 'App.seller-home.view-transactions',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_sellerHome_view-transactions' });
+  },
+});
 
-    FlowRouter.route('/seller-home/update-stock', {
-      name: 'App.seller-home.update-stock',
-      action() {
-        BlazeLayout.render('App_body', { main: 'App_sellerHome_update-stock' });
-      },
-    });
+FlowRouter.route('/seller-home/update-stock', {
+  name: 'App.seller-home.update-stock',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_sellerHome_update-stock' });
+  },
+});
 
 FlowRouter.notFound = {
   action() {

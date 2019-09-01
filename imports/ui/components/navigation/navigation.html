@@ -8,9 +8,11 @@
         <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">shopping_cart</i>My Cart</a></li>
       </ul>
       <ul class="left hide-on-med-and-down">
-        {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor 'login'}}"><i class="material-icons left">person</i>Login</a></li>{{/unless}}
-        {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor 'signup'}}"><i class="material-icons left">person_add</i>Signup</a></li>{{/unless}}
+        {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor '/login'}}"><i class="material-icons left">person</i>Login</a></li>{{/unless}}
+        {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor '/signup'}}"><i class="material-icons left">person_add</i>Signup</a></li>{{/unless}}
         {{#if currentUser}}<li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">account_circle</i>My Account</a></li>{{/if}}
+        {{#if isInRole 'admin'}}<li><a class="blue-text" href="{{pathFor '/admin-home'}}"><i class="material-icons left">supervisor_account</i>Admin Console</a></li>{{/if}}
+        {{#if isInRole 'seller'}}<li><a class="blue-text" href="{{pathFor '/seller-home'}}"><i class="material-icons left">attach_money</i>Seller Console</a></li>{{/if}}
         {{#if currentUser}}<li><a class="blue-text" id="logOutButton"><i class="material-icons left">exit_to_app</i>Log Out</a></li>{{/if}}
         </ul>
     </div>
@@ -19,9 +21,11 @@
   <ul class="sidenav" id="mobile-demo">
     <li><a class="blue-text" href="{{pathFor '/'}}"><i class="blue-text material-icons">home</i>Home</a></li>
     <li><a class="blue-text" href="{{pathFor '/'}}"><i class="blue-text material-icons">shopping_cart</i>My Cart</a></li>
-    {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor 'login'}}"><i class="blue-text material-icons">person</i>Login</a></li>{{/unless}}
-    {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor 'signup'}}"><i class="blue-text material-icons">person_add</i>Signup</a></li>{{/unless}}
+    {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor '/login'}}"><i class="blue-text material-icons">person</i>Login</a></li>{{/unless}}
+    {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor '/signup'}}"><i class="blue-text material-icons">person_add</i>Signup</a></li>{{/unless}}
     {{#if currentUser}}<li><a class="blue-text" href="{{pathFor '/'}}"><i class="blue-text material-icons">account_circle</i>My Account</a></li>{{/if}}
+    {{#if isInRole 'admin'}}<li><a class="blue-text" href="{{pathFor '/admin-home'}}"><i class="material-icons blue-text">supervisor_account</i>Admin Console</a></li>{{/if}}
+    {{#if isInRole 'seller'}}<li><a class="blue-text" href="{{pathFor '/seller-home'}}"><i class="material-icons blue-text">attach_money</i>Seller Console</a></li>{{/if}}
     {{#if currentUser}}<li><a class="blue-text" id="logOutButton"><i class="blue-text material-icons">exit_to_app</i>Log Out</a></li>{{/if}}
   </ul>
 </template>
