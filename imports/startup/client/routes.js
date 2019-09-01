@@ -13,8 +13,9 @@ import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/login/login.js';
 import '../../ui/pages/signup/signup.js';
 
-// Admin Homepage
+// Admin and Seller Homepage
 import '../../ui/pages/admin-home/admin-home.js';
+import '../../ui/pages/seller-home/seller-home.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -42,6 +43,13 @@ FlowRouter.route('/admin-home', {
   name: 'App.admin-home',
   action() {
     BlazeLayout.render('App_body', { main: 'App_adminHome' });
+  },
+});
+
+FlowRouter.route('/seller-home', {
+  name: 'App.seller-home',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_sellerHome' });
   },
 });
 
