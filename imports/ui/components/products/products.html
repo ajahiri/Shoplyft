@@ -1,18 +1,23 @@
 <template name='products'>
-    <div class="container">
-    <div class="row">
-        <div class="col s12 m6 l3">
-          <div class="card">
-            <div class="card-image">
-              <img src="img\laptop-1.JPG">
-              <a onclick="M.toast({html: 'Added to cart'})" class="btn-floating btn-large halfway-fab waves-effect waves-light blue"><i class="material-icons">add_shopping_cart</i></a>
-            </div>
-            <div class="card-content">
-            <span class="card-title">Alienware M17 Gaming Laptop Price: AUD $2000</span>
-              <p>The all new Alienware m17 gaming laptop with hyper-efficient voltage regulation, new ID and 17” screen.</p>
-            </div>
-          </div>
-        </div>
+  <div class="row">
+      {{> productItem}}
+      {{> productItem}}
+      {{> productItem}}
+      {{> productItem}}
+  </div>
+</template>
+
+<template name="productItem">
+  <div class="col s12 m6 l3">
+    <div class="card">
+      <div class="card-image">
+        <img src="img\laptop-1.JPG">
+        <a onclick="M.toast({html: 'Added to cart'})" class="btn-floating btn-large halfway-fab waves-effect waves-light blue"><i class="material-icons">add_shopping_cart</i></a>
+      </div>
+      <div class="card-content">
+      <span class="card-title">Alienware M17 Gaming Laptop Price: AUD $2000</span>
+        <p>The all new Alienware m17 gaming laptop with hyper-efficient voltage regulation, new ID and 17” screen.</p>
       </div>
     </div>
+  </div>
 </template>
