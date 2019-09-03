@@ -1,4 +1,4 @@
-<template name="userTableEntry">
+<template name="completeUserList">
   <tr>
     <td>{{username}}</td>
     <td>{{branch}}</td>
@@ -8,11 +8,7 @@
       {{/each}}
     </td>
     <td>
-      {{#if userIsSeller}}
-        <a href="" id="demote">Demote</a>
-      {{else}}
-        <a href="" id="promote">Promote</a>
-      {{/if}}
+      {{createdAtDate}}
     </td>
   </tr>
 </template>

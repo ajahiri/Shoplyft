@@ -5,7 +5,7 @@ import './fixtures.js';
 import './register-api.js';
 
 // Needed for first admin
-Roles.addUsersToRoles('3zgRymbeviZewzNeJ', ['admin']);
+//Roles.addUsersToRoles('3zgRymbeviZewzNeJ', ['admin']);
 
 Meteor.publish('userList', function() {
   if (!this.userId) {
@@ -20,6 +20,7 @@ Meteor.publish('userList', function() {
         username: 1,
         roles: 1,
         emails: 1,
+        createdAt: 1,
       }
     });
   } else {
