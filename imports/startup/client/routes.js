@@ -19,7 +19,7 @@ import '../../ui/pages/admin-home/admin-home.js';
 // View Branches
 import '../../ui/pages/admin-home/view-branches/view-branches.js';
 // Add/Delete Products
-import '../../ui/pages/admin-home/+-Products/+-Products.js';
+import '../../ui/pages/admin-home/Add-Del-Products/Add-Del-Products.js';
 // View Customers
 import '../../ui/pages/admin-home/view-customers/view-customers.js';
 // Add Sellers
@@ -32,14 +32,14 @@ import '../../ui/pages/seller-home/view-transactions/view-transaction.js';
 // Update Stock
 import '../../ui/pages/seller-home/update-stock/update-stock.js';
 // Add/Delete Products
-import '../../ui/pages/seller-home/+-Products/+-Products.js';
+import '../../ui/pages/seller-home/Add-Del-Products/Add-Del-Products.js';
 
 
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
-    BlazeLayout.render('App_body', { main: 'App_hosme' });
+    BlazeLayout.render('App_body', { main: 'App_home' });
   },
 });
 
@@ -71,10 +71,10 @@ FlowRouter.route('/admin-home/view-branches', {
   },
 });
 
-FlowRouter.route('/admin-home/+-Products', {
-  name: 'App.admin-home.+-Products',
+FlowRouter.route('/admin-home/Add-Del-Products', {
+  name: 'App.admin-home.Add-Del-Products',
   action() {
-    BlazeLayout.render('App_body', { main: 'App_adminHome_+-Products' });
+    BlazeLayout.render('App_body', { main: 'App_adminHome_Add-Del-Products' });
   },
 });
 
@@ -114,10 +114,10 @@ FlowRouter.route('/seller-home/update-stock', {
   },
 });
 
-FlowRouter.route('/seller-home/+-Products', {
-  name: 'App.seller-home.+-Products',
+FlowRouter.route('/seller-home/Add-Del-Products', {
+  name: 'App.seller-home.Add-Del-Products',
   action() {
-    BlazeLayout.render('App_body', { main: 'App_sellerHome_+-Products' });
+    BlazeLayout.render('App_body', { main: 'App_sellerHome_Add-Del-Products' });
   },
 });
 
