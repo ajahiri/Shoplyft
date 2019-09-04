@@ -1,0 +1,14 @@
+<template name="completeUserList">
+  <tr>
+    <td>{{username}}</td>
+    <td>{{branch}}</td>
+    <td>
+      {{#each role}}
+      <li>{{this}}</li>
+      {{/each}}
+    </td>
+    <td>
+      {{createdAtDate}}
+    </td>
+  </tr>
+</template>

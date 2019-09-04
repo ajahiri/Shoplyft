@@ -5,3 +5,10 @@ Template.navigation.onRendered(function() {
   $('.sidenav-overlay').css({"display": "none","opacity": "0"});
   $('.sidenav').sidenav();
 });
+
+Template.navigation.events({
+  'click #logOutButton'(event) {
+    Meteor.logout();
+    M.toast({html: 'You have successfully logged out'});
+  }
+});

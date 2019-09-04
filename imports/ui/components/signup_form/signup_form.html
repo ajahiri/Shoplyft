@@ -9,28 +9,37 @@
         <h5 class="blue-text center">Sign Up</h5>
         <div class="row">
           <div class="input-field col s12">
-            <input id="username" type="text" class="validate">
+            <input id="username" type="text" required class="validate">
             <label for="username">Username</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="email" type="text" class="validate">
+            <input id="email" type="email" required class="validate">
             <label for="username">Email</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" class="validate">
+            <input id="password" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" class="validate">
             <label for="password">Password</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="confPassword" type="password" class="validate">
+            <input id="confPassword" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" class="validate">
             <label for="confPassword">Confirm Password</label>
           </div>
         </div>
+        <blockquote>
+          Passwords must contain the following:
+          <ul>
+            <li>At least six characters.</li>
+            <li>At least one uppercase character.</li>
+            <li>At least one lowercase character.</li>
+            <li>At least one numerical character.</li>
+          </ul>
+        </blockquote>
         <button type="submit" form="signup_form" class="row col s12 blue waves-effect waves-light btn">Sign Up</button>
       </form>
     </div>
