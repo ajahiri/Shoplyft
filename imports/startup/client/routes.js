@@ -81,7 +81,7 @@ FlowRouter.route('/admin-home/+-Products', {
 FlowRouter.route('/admin-home/view-customers', {
   name: 'App.admin-home.view-customers',
   action() {
-    BlazeLayout.render('App_body', { main: 'App_adminHome_view-customers' });
+    BlazeLayout.render('App_body', { main: 'viewCustomers' });
   },
 });
 
