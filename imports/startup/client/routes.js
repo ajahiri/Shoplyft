@@ -31,13 +31,15 @@ import '../../ui/pages/seller-home/seller-home.js';
 import '../../ui/pages/seller-home/view-transactions/view-transaction.js';
 // Update Stock
 import '../../ui/pages/seller-home/update-stock/update-stock.js';
+// Add/Delete Products
+import '../../ui/pages/seller-home/+-Products/+-Products.js';
 
 
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
-    BlazeLayout.render('App_body', { main: 'App_home' });
+    BlazeLayout.render('App_body', { main: 'App_hosme' });
   },
 });
 
@@ -109,6 +111,13 @@ FlowRouter.route('/seller-home/update-stock', {
   name: 'App.seller-home.update-stock',
   action() {
     BlazeLayout.render('App_body', { main: 'App_sellerHome_update-stock' });
+  },
+});
+
+FlowRouter.route('/seller-home/+-Products', {
+  name: 'App.seller-home.+-Products',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_sellerHome_+-Products' });
   },
 });
 
