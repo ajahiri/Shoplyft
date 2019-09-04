@@ -1,1 +1,1 @@
-import '.Add-Del-Products.html';
+import './Add-Del-Products.html';
