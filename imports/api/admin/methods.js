@@ -1,3 +1,6 @@
+//import { Branches } from '../collections/Branches.js';
+import { Random } from 'meteor/random';
+
 // Needed for first admin
 //Roles.addUsersToRoles('3zgRymbeviZewzNeJ', ['admin']);
 
@@ -23,5 +26,5 @@ Meteor.methods({
     } else {
       return new Error('Not authorised!');
     }
-  }
+  },
 });

@@ -1,4 +1,33 @@
-<template name='App_adminHome_view-branches'> 
-    {{> navigation}}
-    <h1>View Branches</h1>
+<template name='viewBranches'>
+  {{> navigation}}
+  <div class="container">
+    <div class="row col s12">
+      <h1>View Branches</h1>
+      <table class="highlight">
+        <thead>
+          <tr>
+              <th>Branch Name</th>
+              <th>Location</th>
+              <th>Phone</th>
+              <th>Address</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each branches}}
+            {{> branchData}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</template>
+
+<template name="branchData">
+  <tr>
+    <td>{{name}}</td>
+    <td>{{location}}</td>
+    <td>{{phoneNumber}}</td>
+    <td>{{address}}</td>
+  </tr>
 </template>
