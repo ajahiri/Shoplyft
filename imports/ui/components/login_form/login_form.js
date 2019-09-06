@@ -12,11 +12,16 @@ Template.login_form.events({
 
     Meteor.loginWithPassword(username, password, function(error){
       if (error){
-        console.log(error.reason);
+        M.toast({html: error.reason});
       }
+    });
+    Accounts.onLogin(function() {
+      FlowRouter.go('App.home');
+      M.toast({html: 'Successfully logged in!'});
     });
   },
   'click #logOutButton'(event) {
+    M.toast({html: 'Successfully logged out!'});
     Meteor.logout();
   }
 });

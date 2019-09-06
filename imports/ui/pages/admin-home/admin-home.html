@@ -1,0 +1,13 @@
+<template name='App_adminHome'>
+  {{> navigation}}
+  <div class="container">
+    <div class="row">
+      <h2 class="row col s12">I want to<span class="blue-text">...</span></h2>
+      <a href="{{pathFor 'admin-home/view-branches'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">View Branches</a>
+      <a href="{{pathFor 'admin-home/addBranches'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">Add Branches</a>
+      <a href="{{pathFor 'admin-home/delProducts'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">Remove Products</a>
+      <a href="{{pathFor 'admin-home/view-customers'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">View Customers</a>
+      <a href="{{pathFor 'admin-home/add-seller'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">Add Seller</a>
+    </div>
+  </div>
+</template>
