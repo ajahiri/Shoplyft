@@ -1,5 +1,5 @@
-import './userTableEntry.html';
-Template.userTableEntry.helpers({
+import './userPromoteEntry.html';
+Template.userPromoteEntry.helpers({
   role() {
     if (this.roles) {
       return this.roles;
@@ -21,7 +21,7 @@ Template.userTableEntry.helpers({
   }
 });
 
-Template.userTableEntry.events({
+Template.userPromoteEntry.events({
   'click #promote'(event) {
     var selectedUserID = this._id;
     Meteor.call('userTableEntry.promoteUser', {

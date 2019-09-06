@@ -10,3 +10,13 @@ Meteor.publish('branchesAdmin', function() {
     return this.ready();
   }
 });
+
+Meteor.publish('branchesList', function() {
+  return Branches.find({}, {
+    fields: {
+      name: 1,
+      address: 1,
+      products: 1,
+    },
+  });
+});

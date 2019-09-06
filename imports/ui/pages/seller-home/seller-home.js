@@ -3,6 +3,15 @@ import './seller-home.html';
 import './view-transactions/view-transaction.js';
 // Update Stock
 import './update-stock/update-stock.js';
+//Add New products
+import './addNewProduct/addNewProduct.js';
+
+FlowRouter.route('/seller-home/add-new-product', {
+  name: 'App.seller-home.add-new-product',
+  action() {
+    BlazeLayout.render('App_body', { main: 'addNewProduct' });
+  },
+});
 
 FlowRouter.route('/seller-home/view-transactions', {
   name: 'App.seller-home.view-transactions',

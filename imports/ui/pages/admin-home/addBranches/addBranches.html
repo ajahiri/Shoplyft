@@ -20,6 +20,14 @@
               <input id="contact_email" type="email" class="validate">
               <label for="contact_email">Contact Email</label>
             </div>
+            <div class="input-field col s12 m12">
+              <select id="sellerSelector" class="browser-default">
+                <option value="" disabled selected>Assign Seller</option>
+                {{#each sellersFound}}
+                  {{> sellerDropOption}}
+                {{/each}}
+              </select>
+            </div>
           </div>
           <div class="row">
             <h4>Address:</h4>
@@ -52,4 +60,8 @@
         </form>
       </div>
     </div>
+</template>
+
+<template name="sellerDropOption">
+  <option value="{{sellerID}}">{{sellerName}}</option>
 </template>

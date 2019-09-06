@@ -2,19 +2,17 @@
   {{> navigation}}
   <div class="container">
     <div class="row">
-      <div class="col s12">
-        <h2>Add Seller</h2>
-        <p>Search for a user to promote to seller permission:</p>
-      </div>
-      <div class="col s12">
-        <form id="userSearchForm">
-          <div class="input-field">
+      <form id="userSearchForm" class="col s12">
+        <div class="row">
+          <h2>Add Sellers</h2>
+          <p>Search for users to promote to seller by username:</p>
+          <div class="input-field col s12">
             <i class="material-icons prefix">search</i>
             <input type="text" id="username">
-            <label for="user-search">Search</label>
+            <label for="username">Search</label>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
       <div class="col s12">
         <table class="highlight">
           <thead>
@@ -28,7 +26,7 @@
 
           <tbody>
             {{#each usersFound}}
-              {{> userTableEntry}}
+              {{> userPromoteEntry}}
             {{/each}}
           </tbody>
         </table>

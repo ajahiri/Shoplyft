@@ -6,6 +6,7 @@ export const Branches = new Mongo.Collection('branches');
 Branches.schema = new SimpleSchema({
   _id: { type: String },
   name: { type: String },
+  seller: { type: String },
   email: { type: String },
   address: { type: Object },
   "address.unitNo": {
@@ -27,8 +28,9 @@ Branches.schema = new SimpleSchema({
   products: { type: [Object], optional: true},
   "products.name": { type: String },
   "products.description": { type: String },
-  "products.price": { type: Number },
+  "products.price": { type: String },
   "products.imageURL": { type: String },
   "products.stock": { type: Number },
+  "products.createdAt": { type: Date },
   createdAt: { type: Date }
 });

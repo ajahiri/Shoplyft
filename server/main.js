@@ -7,10 +7,3 @@ import '/imports/startup/both';
 Meteor.users.deny({
   update() { return true; }
 });
-
-//Add all users to default "customer" role on creation
-//This doesn't work, not actually needed, will be removed next release.
-Accounts.onCreateUser((options, user) => {
-  Roles.addUsersToRoles(user._id, 'customer');
-  return user;
-});
