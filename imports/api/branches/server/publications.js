@@ -1,5 +1,7 @@
 import { Branches } from '../branches.js';
-import { Random } from 'meteor/random';
+
+//Found a better way to do this search using client side JS -Arian
+/* import { Random } from 'meteor/random';
 import { ReactiveAggregate } from 'meteor/tunguska:reactive-aggregate';
 
 Meteor.publish('searchProducts', function(productName, branchID) {
@@ -10,7 +12,7 @@ Meteor.publish('searchProducts', function(productName, branchID) {
     { $match: {'products.name': {$regex: productName}}},
     { $group: {_id: Random.id(), productsFound: {$addToSet: '$products'} }}
   ], {clientCollection: 'FoundProducts'});
-});
+}); */
 
 Meteor.publish('branchesAdmin', function() {
   if (!this.userId) {

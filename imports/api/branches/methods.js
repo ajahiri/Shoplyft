@@ -39,7 +39,7 @@ Meteor.methods({
         Branches.insert(newBranch);
       }
     } else {
-      return new Error('Not authorised!');
+      return new Meteor.Error('Authorization error.','Not authorised!');
     }
   },
   'addNewProduct.addProduct'({
@@ -79,7 +79,7 @@ Meteor.methods({
         }
       });
     } else {
-      return new Error('Not authorised!');
+      return new Meteor.Error('Authorization error.','Not authorised!');
     }
   }
 });

@@ -16,35 +16,32 @@ Template.products.onRendered(function() {
 });
 
 Template.products.helpers({
-  productsinBranch() {
+  products() {
     if (viewingBranch.get() == 'promotional') {
       return;
-    } else {
-      if (productSearch.get() == "") {
-        return Branches.findOne({_id: viewingBranch.get()}).products;
-      } else {
-        return FoundProducts.findOne({}).productsFound;
-      }
+    }
+    else if (productSearch.get() != "") {
+      //return FoundProducts.findOne({}).productsFound;
+      var productsToSearch = Branches.findOne({_id: viewingBranch.get()}).products;
+      //console.log(productsToSearch);
+      var searchParam = productSearch.get().toLowerCase();
+      var productsFound = [];
+      productsToSearch.forEach(x => {if (x.name.toLowerCase().includes(searchParam)) productsFound.push(x) });
+      //console.log(productsFound);
+      return productsFound;
+    }
+    else {
+      return Branches.findOne({_id: viewingBranch.get()}).products;
     }
   },
 });
-
-Template.productItem.helpers({
-  name() {
-    if (productSearch.get() == "") {
-      return name;
-    } else {
-      return this.name;
-    }
-  }
-})
 
 Template.dropdown.events({
   'keyup #productSearch'(event, template) {
     //Prevent default browser form submission
     event.preventDefault();
     if (prodSub) {
-      prodSub.stop();
+        prodSub.stop();
     }
     //Get our data values from the DOM
     var searchVal = template.$("#productSearch").val();
