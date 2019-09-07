@@ -1,4 +1,16 @@
 import { Branches } from '../branches.js';
+import { Random } from 'meteor/random';
+import { ReactiveAggregate } from 'meteor/tunguska:reactive-aggregate';
+
+Meteor.publish('searchProducts', function(productName, branchID) {
+  ReactiveAggregate(this, Branches, [
+    //pipeline
+    { $match: {_id: branchID, 'products.name': {$regex: productName}}},
+    { $unwind: "$products" },
+    { $match: {'products.name': {$regex: productName}}},
+    { $group: {_id: Random.id(), productsFound: {$addToSet: '$products'} }}
+  ], {clientCollection: 'FoundProducts'});
+});
 
 Meteor.publish('branchesAdmin', function() {
   if (!this.userId) {
@@ -10,7 +22,6 @@ Meteor.publish('branchesAdmin', function() {
     return this.ready();
   }
 });
-
 Meteor.publish('branchesList', function() {
   return Branches.find({}, {
     fields: {
