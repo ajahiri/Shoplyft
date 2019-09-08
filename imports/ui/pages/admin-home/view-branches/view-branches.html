@@ -1,26 +1,29 @@
 <template name='viewBranches'>
   {{> navigation}}
-  <div class="container">
-    <div class="row col s12">
-      <h1>View Branches</h1>
-      <table class="highlight">
-        <thead>
-          <tr>
-              <th>Branch Name</th>
-              <th>Location</th>
-              <th>Phone</th>
-              <th>Address</th>
-          </tr>
-        </thead>
+  <main>
+    <div class="container">
+      <div class="row col s12">
+        <h1>View Branches</h1>
+        <table class="highlight">
+          <thead>
+            <tr>
+                <th>Branch Name</th>
+                <th>Location</th>
+                <th>Phone</th>
+                <th>Address</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          {{#each branches}}
-            {{> branchData}}
-          {{/each}}
-        </tbody>
-      </table>
+          <tbody>
+            {{#each branches}}
+              {{> branchData}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
+  </main>
+  {{> footer}}
 </template>
 
 <template name="branchData">

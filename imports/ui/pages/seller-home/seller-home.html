@@ -1,11 +1,14 @@
 <template name='App_sellerHome'>
   {{> navigation}}
-  <div class="container">
-    <div class="row">
-      <h2 class="row col s12">I want to<span class="blue-text">...</span></h2>
-      <a href="{{pathFor 'seller-home/view-transactions'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">View Transaction History</a>
-      <a href="{{pathFor 'seller-home/add-new-product'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">Add Products</a>
-      <a href="{{pathFor 'seller-home/update-stock'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">Update Stock</a>
+  <main>
+    <div class="container">
+      <div class="row">
+        <h2 class="row col s12">I want to<span class="blue-text">...</span></h2>
+        <a href="{{pathFor 'seller-home/view-transactions'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">View Transaction History</a>
+        <a href="{{pathFor 'seller-home/add-new-product'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">Add Products</a>
+        <a href="{{pathFor 'seller-home/update-stock'}}" class="row col s12 z-depth-3 hoverable waves-effect waves-light btn-large blue">Update Stock</a>
+      </div>
     </div>
-  </div>
+  </main>
+  {{> footer}}
 </template>
