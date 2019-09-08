@@ -9,6 +9,8 @@ App.info({
   version: '0.1.0',
   buildNumber: '1'
 });
+
+App.setPreference('android-targetSdkVersion', '289');
 // Set up resources such as icons and launch screens.
 App.icons({
   'android_mdpi': 'androidAssets/icons/icon-48-mdpi.png',
