@@ -1,7 +1,26 @@
 <template name='delProducts'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   {{> navigation}}
   <main>
-    <h1>Add/Delete Products</h1>
+    <h1>Remove Products</h1>
+      <div class="container">
+        <div class="row">
+          {{> dropdown}}
+          {{> products}}
+          <div class="col s12">
+              <table class="highlight">
+                <thead>
+                  <tr>
+                      <th>Product ID</th>
+                      <th>Product Name</th>
+                      <th>Branch</th>
+                      <th>Stock</th>
+                  </tr>
+                </thead>
+              </table>
+          </div>
+        </div>
+      </div>
   </main>
   {{> footer}}
 </template>
