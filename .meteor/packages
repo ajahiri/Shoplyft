@@ -36,3 +36,4 @@ alanning:roles
 aldeed:simple-schema
 momentjs:moment
 planettraining:material-design-icons-font
+lmieulet:meteor-coverage@=1.1.4
