@@ -1,5 +1,5 @@
 import './add-seller.html';
-import '../../../components/userTableEntry/userTableEntry.js';
+import '../../../components/userPromoteEntry/userPromoteEntry.js';
 
 Template.addSeller.onCreated(function() {
   Meteor.subscribe('userList');

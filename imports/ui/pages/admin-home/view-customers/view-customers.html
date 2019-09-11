@@ -1,36 +1,39 @@
 <template name='viewCustomers'>
     {{> navigation}}
-    <div class="container">
-      <div class="row col s12">
-        <h2>View Customers</h2>
-        <p>All users:</p>
-      </div>
-      <div class="row">
-        <form id="userSearchForm" class="col s12">
-          <div class="input-field">
-            <i class="material-icons prefix">search</i>
-            <input type="text" id="username">
-            <label for="user-search">Search</label>
-          </div>
-        </form>
-      </div>
-      <div class="row col s12">
-        <table class="highlight">
-          <thead>
-            <tr>
-                <th>Username</th>
-                <th>Branch</th>
-                <th>Role</th>
-                <th>Join Date</th>
-            </tr>
-          </thead>
+    <main>
+      <div class="container">
+        <div class="row">
+          <form id="userSearchForm" class="col s12">
+            <div class="row">
+              <h2>View Customers</h2>
+              <p>Search for user by username:</p>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="username">
+                <label for="username">Search</label>
+              </div>
+            </div>
+          </form>
+          <div class="col s12">
+            <table class="highlight">
+              <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Branch</th>
+                    <th>Role</th>
+                    <th>Join Date</th>
+                </tr>
+              </thead>
 
-          <tbody>
-            {{#each users}}
-              {{> completeUserList}}
-            {{/each}}
-          </tbody>
-        </table>
+              <tbody>
+                {{#each users}}
+                  {{> completeUserList}}
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
+    {{> footer}}
 </template>

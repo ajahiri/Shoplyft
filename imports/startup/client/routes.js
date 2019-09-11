@@ -16,6 +16,7 @@ import '../../ui/pages/signup/signup.js';
 
 // Admin Homepage
 import '../../ui/pages/admin-home/admin-home.js';
+<<<<<<< HEAD
 // View Branches
 import '../../ui/pages/admin-home/view-branches/view-branches.js';
 // Add/Delete Products
@@ -33,6 +34,13 @@ import '../../ui/pages/seller-home/view-transactions/view-transaction.js';
 import '../../ui/pages/seller-home/update-stock/update-stock.js';
 // Add/Delete Products
 import '../../ui/pages/seller-home/Add-Del-Products/Add-Del-Products.js';
+=======
+//All admin functions should be imported in the admin-home.js
+
+// Seller Homepage
+import '../../ui/pages/seller-home/seller-home.js';
+//All seller functions should be imported in the seller-home.js
+>>>>>>> master
 
 
 // Set up all routes in the app
@@ -57,6 +65,7 @@ FlowRouter.route('/signup', {
   },
 });
 
+//Respective routes for admin pages are in admin-home js
 FlowRouter.route('/admin-home', {
   name: 'App.admin-home',
   action() {
@@ -64,6 +73,7 @@ FlowRouter.route('/admin-home', {
   },
 });
 
+<<<<<<< HEAD
 FlowRouter.route('/admin-home/view-branches', {
   name: 'App.admin-home.view-branches',
   action() {
@@ -93,12 +103,16 @@ FlowRouter.route('/admin-home/add-seller', {
 });
 
 
+=======
+//Respective routes for seller pages are in seller-home js
+>>>>>>> master
 FlowRouter.route('/seller-home', {
   name: 'App.seller-home',
   action() {
     BlazeLayout.render('App_body', { main: 'App_sellerHome' });
   },
 });
+<<<<<<< HEAD
 
 FlowRouter.route('/seller-home/view-transactions', {
   name: 'App.seller-home.view-transactions',
@@ -126,3 +140,5 @@ FlowRouter.notFound = {
     BlazeLayout.render('App_body', { main: 'App_notFound' });
   },
 };
+=======
+>>>>>>> master

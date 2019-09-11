@@ -27,5 +27,14 @@ Developer - Arian J
 UX/UI Designer & Documentation - Anjali Kalambe
 
 
+### Technology
+Wireframes- Invision
 
+Framework- Meteor JS
+
+Front End- Blaze
+
+Back End- MongoDB
+
+Host- Amazon Web Service (Free Tier)
 

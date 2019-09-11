@@ -1,3 +1,5 @@
+//import { Branches } from '../../collections/Branches.js';
+
 Meteor.publish('userList', function() {
   if (!this.userId) {
     return this.ready();
@@ -9,6 +11,7 @@ Meteor.publish('userList', function() {
       fields: {
         _id: 1,
         username: 1,
+        allocatedBranch: 1,
         roles: 1,
         emails: 1,
         createdAt: 1,

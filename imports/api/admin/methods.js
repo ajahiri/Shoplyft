@@ -1,5 +1,8 @@
+//import { Branches } from '../collections/Branches.js';
+import { Random } from 'meteor/random';
+
 // Needed for first admin
-//Roles.addUsersToRoles('3zgRymbeviZewzNeJ', ['admin']);
+Roles.addUsersToRoles('8kppYzZvPxm4Gy7Ra', ['admin']);
 
 Meteor.methods({
   'userTableEntry.promoteUser'({userId}) {
@@ -23,5 +26,5 @@ Meteor.methods({
     } else {
       return new Error('Not authorised!');
     }
-  }
+  },
 });

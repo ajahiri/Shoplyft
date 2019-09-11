@@ -2,7 +2,7 @@
   <nav class="white">
     <div class="nav-wrapper">
       <a href="{{pathFor '/'}}" class="brand-logo center blue-text">ShopLyft.</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="blue-text material-icons">menu</i></a>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="blue-text material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">home</i>Home</a></li>
         <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">shopping_cart</i>My Cart</a></li>
@@ -18,7 +18,7 @@
     </div>
   </nav>
 
-  <ul class="sidenav" id="mobile-demo">
+  <ul class="sidenav" id="slide-out">
     <li><a class="blue-text" href="{{pathFor '/'}}"><i class="blue-text material-icons">home</i>Home</a></li>
     <li><a class="blue-text" href="{{pathFor '/'}}"><i class="blue-text material-icons">shopping_cart</i>My Cart</a></li>
     {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor '/login'}}"><i class="blue-text material-icons">person</i>Login</a></li>{{/unless}}
