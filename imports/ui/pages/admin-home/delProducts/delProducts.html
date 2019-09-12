@@ -1,22 +1,27 @@
 <template name='delProducts'>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- This line is for the Bin Icon <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
   {{> navigation}}
   <main>
     <h1>Remove Products</h1>
       <div class="container">
         <div class="row">
           {{> dropdown}}
-          {{> products}}
           <div class="col s12">
               <table class="highlight">
                 <thead>
                   <tr>
-                      <th>Product ID</th>
                       <th>Product Name</th>
-                      <th>Branch</th>
+                      <th>Product Price</th>
                       <th>Stock</th>
+                      <th>Action</th>
                   </tr>
                 </thead>
+
+                <tbody>
+                  {{#each FoundProducts}}
+                    {{> delProductsEntry}}
+                  {{/each}}
+                </tbody>
               </table>
           </div>
         </div>
