@@ -19,6 +19,9 @@ import '../../ui/pages/admin-home/admin-home.js';
 //Product page list view
 import '../../ui/pages/product_list/product_list.js';
 
+//mycart page
+import '../../ui/pages/mycart/mycart.js';
+
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',
@@ -58,5 +61,12 @@ FlowRouter.route('/product_listview', {
   name: 'product_listview',
   action() {
     BlazeLayout.render('product_listview');
+  },
+});
+
+FlowRouter.route('/mycart', {
+  name: 'mycart',
+  action() {
+    BlazeLayout.render('mycart');
   },
 });
