@@ -1,6 +1,6 @@
 <template id="product_row" name="product_row">
   <div class = "row">
-    <div class ="container col s8 right" id ="product_row">
+    <div class ="container" id ="product_row">
           {{>single_product}}
           {{>single_product}}
           {{>single_product}}
@@ -21,8 +21,7 @@
 </template>
 
 <template name="single_product">
-  <div class="row">
-   <div class="container" id="single_product">
+   <div class="container col s4" id="single_product">
          <div id="single_product_image">
               <img class ="product_image" src="img/image.jpg" >
          </div>
@@ -36,5 +35,4 @@
              <p><button class="add_to_cart_btn">Add to Cart</button></p>
         </div>
     </div>
-  </div>
 </template>
