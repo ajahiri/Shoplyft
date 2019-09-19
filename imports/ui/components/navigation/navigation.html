@@ -4,17 +4,17 @@
       <a href="{{pathFor '/'}}" class="brand-logo center blue-text">ShopLyft.</a>
       <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="blue-text material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">home</i>Home</a></li>
+        {{#if currentUser}}<li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">account_circle</i>My Account</a></li>{{/if}}
         <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">shopping_cart</i>My Cart</a></li>
       </ul>
       <ul class="left hide-on-med-and-down">
+        <li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">home</i>Home</a></li>
         {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor '/login'}}"><i class="material-icons left">person</i>Login</a></li>{{/unless}}
         {{#unless currentUser}}<li><a class="blue-text" href="{{pathFor '/signup'}}"><i class="material-icons left">person_add</i>Signup</a></li>{{/unless}}
-        {{#if currentUser}}<li><a class="blue-text" href="{{pathFor '/'}}"><i class="material-icons left">account_circle</i>My Account</a></li>{{/if}}
         {{#if isInRole 'admin'}}<li><a class="blue-text" href="{{pathFor '/admin-home'}}"><i class="material-icons left">supervisor_account</i>Admin Console</a></li>{{/if}}
         {{#if isInRole 'seller'}}<li><a class="blue-text" href="{{pathFor '/seller-home'}}"><i class="material-icons left">attach_money</i>Seller Console</a></li>{{/if}}
         {{#if currentUser}}<li><a class="blue-text" id="logOutButton"><i class="material-icons left">exit_to_app</i>Log Out</a></li>{{/if}}
-        </ul>
+      </ul>
     </div>
   </nav>
 

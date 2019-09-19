@@ -7,3 +7,5 @@ import '/imports/startup/both';
 Meteor.users.deny({
   update() { return true; }
 });
+
+Roles.addUsersToRoles('X7neTbLQi8NZBTKEB', 'admin');

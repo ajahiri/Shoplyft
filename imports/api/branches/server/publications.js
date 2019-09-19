@@ -1,5 +1,5 @@
 import { Branches } from '../branches.js';
-
+import { Products } from '../branches.js';
 //Found a better way to do this search using client side JS -Arian
 /* import { Random } from 'meteor/random';
 import { ReactiveAggregate } from 'meteor/tunguska:reactive-aggregate';
@@ -29,7 +29,9 @@ Meteor.publish('branchesList', function() {
     fields: {
       name: 1,
       address: 1,
-      products: 1,
     },
   });
+});
+Meteor.publish('productList', function() {
+  return Products.find({}, {});
 });
