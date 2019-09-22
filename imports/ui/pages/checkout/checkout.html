@@ -1,0 +1,66 @@
+<template name="checkout">
+  {{>product_page_navigation}}
+  {{>branch_dropdown}}
+  {{>billing_Info}}
+</template>
+
+<template name="billing_Info">
+  <form name="billing_Info">
+    <div class="row">
+      <div class="row">
+        <div class="container col s4 push-s1 left">
+          <div>
+            <h4>Billing Information</h4>
+          </div>
+          <div>
+            <label class="left" for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Lucky Jaiswal">
+            <label class="left" for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input  type="text" id="email" name="email" placeholder="lucky@lucky.com">
+            <label class="left" for="adr"><i class="fa fa-address-card-o"></i> Street</label>
+            <input type="text" id="street" name="street" placeholder="34/60 Belmore Street">
+            <label class="left" for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="Sydney">
+            <label class="left" for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="New South Wales">
+            <label class="left" for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="2112">
+            <label class="left" for="zip">Zip</label>
+            <input type="text" id="zip" name="zip" placeholder="2112">
+
+          </div>
+        </div>
+        </div>
+
+        <div class="row">
+          <div class = "container col s4 push-s1 left">
+             <h3>Payment</h3>
+             <label for="fname">Accepted Cards</label>
+             <div class="icon-container">
+               <i class="fa fa-cc-visa" style="color:navy;"></i>
+               <i class="fa fa-cc-amex" style="color:blue;"></i>
+               <i class="fa fa-cc-mastercard" style="color:red;"></i>
+               <i class="fa fa-cc-discover" style="color:orange;"></i>
+             </div>
+             <label class="left" for="cname">Name on Card</label>
+             <input type="text" id="cname" name="cardname" placeholder="Lucky Jaiswal">
+             <label class="left" for="ccnum">Credit card number</label>
+             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+             <label class="left" for="expmonth">Exp Month</label>
+             <input type="text" id="expmonth" name="expmonth" placeholder="September">
+
+               <div>
+                 <label class="left" for="expyear">Exp Year</label>
+                 <input type="text" id="expyear" name="expyear" placeholder="2019">
+               </div>
+               <div class>
+                 <label class="left" for="cvv">CVV</label>
+                 <input type="text" id="cvv" name="cvv" placeholder="352">
+               </div>
+
+           </div>
+        </div>
+      </div>
+
+  </form>
+</template>

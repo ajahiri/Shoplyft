@@ -1,0 +1,38 @@
+<template id="product_row" name="product_row">
+  <div class = "row">
+    <div class ="container" id ="product_row">
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+          {{>single_product}}
+      </div>
+  </div>
+</template>
+
+<template name="single_product">
+   <div class="container col s4" id="single_product">
+         <div id="single_product_image">
+              <img class ="product_image" src="img/image.jpg" >
+         </div>
+         <div id="product_title">
+             <p>Product_Title</p>
+         </div>
+         <div id="product_price">
+             <p class="price">$Price</p>
+         </div>
+         <div id="Add_to_Cart">
+             <p><button class="add_to_cart_btn">Add to Cart</button></p>
+        </div>
+    </div>
+</template>
