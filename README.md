@@ -30,11 +30,13 @@ UX/UI Designer & Documentation - Anjali Kalambe
 ### Technology
 Wireframes- Invision
 
-Framework- Meteor JS
+Framework- MeteorJS (Full Stack Framework)
 
-Front End- Blaze
+Front End- MeteorJS (BlazeJS)
 
-Back End- MongoDB
+Back End- MeteorJS
+
+Database- MongoDB
 
 Host- Amazon Web Service (Free Tier)
 
