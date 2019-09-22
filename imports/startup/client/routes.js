@@ -1,5 +1,6 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
+import { Roles } from 'meteor/alanning:roles';
 
 //Global UI Components
 import '../../ui/components/navigation/navigation.js';
@@ -15,6 +16,12 @@ import '../../ui/pages/signup/signup.js';
 
 // Admin Homepage
 import '../../ui/pages/admin-home/admin-home.js';
+//All admin functions should be imported in the admin-home.js
+
+// Seller Homepage
+import '../../ui/pages/seller-home/seller-home.js';
+//All seller functions should be imported in the seller-home.js
+
 
 //Product page list view
 import '../../ui/pages/product_list/product_list.js';
@@ -47,6 +54,7 @@ FlowRouter.route('/signup', {
   },
 });
 
+//Respective routes for admin pages are in admin-home js
 FlowRouter.route('/admin-home', {
   name: 'App.admin-home',
   action() {
@@ -54,12 +62,16 @@ FlowRouter.route('/admin-home', {
   },
 });
 
-FlowRouter.notFound = {
+//Respective routes for seller pages are in seller-home js
+FlowRouter.route('/seller-home', {
+  name: 'App.seller-home',
   action() {
-    BlazeLayout.render('App_body', { main: 'App_notFound' });
+    BlazeLayout.render('App_body', { main: 'App_sellerHome' });
   },
 };
 
+//Routes added by Lucky, need to double check. 
+//Resolved conflict for now
 FlowRouter.route('/product_listview', {
   name: 'product_listview',
   action() {

@@ -32,3 +32,7 @@ easy:search
 easysearch:elasticsearch
 easysearch:autosuggest
 fortawesome:fontawesome
+alanning:roles
+aldeed:simple-schema
+momentjs:moment
+planettraining:material-design-icons-font
