@@ -1,5 +1,6 @@
 import { Random } from 'meteor/random';
 import { Branches } from './branches.js';
+import { Products } from './branches.js';
 
 Meteor.methods({
   'addBranches.addNewBranch'({
@@ -29,7 +30,6 @@ Meteor.methods({
         phoneNumber: phoneNumber,
         address: address,
         createdAt: new Date(),
-        products: [],
       }
       Branches.schema.validate(newBranch);
       if (Meteor.users.findOne({_id: seller}).allocatedBranch) {
@@ -47,7 +47,8 @@ Meteor.methods({
     imageLink,
     stock,
     price,
-    description
+    description,
+    promoBool
   }) {
     if (Roles.userIsInRole(this.userId, 'seller')) {
       if(!Meteor.user().allocatedBranch) {
@@ -56,6 +57,8 @@ Meteor.methods({
       const sellerBranch = Meteor.user().allocatedBranch;
       const newProduct = {
         _id: Random.id(),
+        branch: sellerBranch,
+        promotional: promoBool,
         name: name,
         description: description,
         price: price,
@@ -65,6 +68,8 @@ Meteor.methods({
       }
       const productSchema = new SimpleSchema({
         _id: { type: String },
+        branch: { type: String },
+        promotional: { type: Boolean },
         name: { type: String },
         description: { type: String },
         price: { type: String },
@@ -73,11 +78,8 @@ Meteor.methods({
         createdAt: { type: Date },
       }).validate(newProduct);
 
-      Branches.update({_id: sellerBranch}, {
-        $push: {
-          products: newProduct,
-        }
-      });
+      Products.insert(newProduct);
+
     } else {
       return new Meteor.Error('Authorization error.','Not authorised!');
     }

@@ -1,6 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 
 export const Branches = new Mongo.Collection('branches');
+export const Products = new Mongo.Collection('products');
 //const FeaturedProducts = new Mongo.Collection('FeaturedProducts');  //This may or may not be used as a separate collection
 
 Branches.schema = new SimpleSchema({
@@ -25,12 +26,17 @@ Branches.schema = new SimpleSchema({
     type: Number              //Australian postal codes are always numbers
   },
   phoneNumber: { type: String},
-  products: { type: [Object], optional: true},
-  "products.name": { type: String },
-  "products.description": { type: String },
-  "products.price": { type: String },
-  "products.imageURL": { type: String },
-  "products.stock": { type: Number },
-  "products.createdAt": { type: Date },
   createdAt: { type: Date }
+});
+
+Products.schema = new SimpleSchema({
+  _id: { type: String },
+  branch: { type: String },
+  promotional: { type: Boolean },
+  name: { type: String },
+  description: { type: String },
+  price: { type: String },
+  imageURL: { type: String },
+  stock: { type: Number },
+  createdAt: { type: Date },
 });

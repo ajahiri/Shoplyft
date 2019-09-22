@@ -16,6 +16,7 @@ Template.addNewProduct.events({
     const stock = target.item_stock.value;
     const price = target.item_price.value;
     const description = target.item_description.value;
+    const promotionalBool = $('#promoCheck').is(':checked');
 
     //Call method to add new product
     Meteor.call('addNewProduct.addProduct', {
@@ -23,7 +24,8 @@ Template.addNewProduct.events({
       imageLink: imageURL,
       stock: stock,
       price: price,
-      description: description
+      description: description,
+      promoBool: promotionalBool
     }, (err, res) => {
       if (err) {
         M.toast({html: 'Unable to add new Product. Error: ' + err.reason});
