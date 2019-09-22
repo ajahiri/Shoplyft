@@ -68,9 +68,9 @@ FlowRouter.route('/seller-home', {
   action() {
     BlazeLayout.render('App_body', { main: 'App_sellerHome' });
   },
-};
+});
 
-//Routes added by Lucky, need to double check. 
+//Routes added by Lucky, need to double check.
 //Resolved conflict for now
 FlowRouter.route('/product_listview', {
   name: 'product_listview',
