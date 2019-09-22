@@ -34,7 +34,7 @@ Framework- MeteorJS (Full Stack Framework)
 
 Front End- MeteorJS (BlazeJS)
 
-Back End- MeteorJS
+Back End- MeteorJS (NodeJS)
 
 Database- MongoDB
 
