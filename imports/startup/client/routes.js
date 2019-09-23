@@ -22,6 +22,9 @@ import '../../ui/pages/admin-home/admin-home.js';
 import '../../ui/pages/seller-home/seller-home.js';
 //All seller functions should be imported in the seller-home.js
 
+// MyAccount
+import '../../ui/pages/MyAccount/MyAccount.js';
+
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -58,5 +61,12 @@ FlowRouter.route('/seller-home', {
   name: 'App.seller-home',
   action() {
     BlazeLayout.render('App_body', { main: 'App_sellerHome' });
+  },
+});
+
+FlowRouter.route('/MyAccount', {
+  name: 'App.MyAccount',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_MyAccount' });
   },
 });
