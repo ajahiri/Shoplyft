@@ -1,33 +1,27 @@
-<template name='MyAccount'>
-    {{#if currentUser}}
-        <div id="profile-wrap">
-            <table>
-                <thead>
-                  <tr>
-                      <th>Name</th>
-                      <th>Item Name</th>
-                      <th>Item Price</th>
-                  </tr>
-                </thead>
-        
-                <tbody>
-                  <tr>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                  </tr>
-                  <tr>
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                    <td>$3.76</td>
-                  </tr>
-                  <tr>
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-    {{/if}}
+<template name='App_MyAccount'>
+{{> navigation}}
+    <main>
+        {{#if currentUser}}
+            <div class="container section">
+                <div class="row center">
+                    <div class="col s10 offset-s1">
+                        <div class="card-panel grey lighten-4">
+                            <i class="material-icons center large blue-text">account_circle</i>
+                            <h4 class="username">Username: {{getUsername}}</h4>
+                            <h6 class="id">ID: {{getId}}</h6>
+                            <div class="section"><h5 class="email">Email: {{getEmail}}</h5></div>
+                            <!-- {{# if !verified}}
+                                IF not verified, show a notification 
+                            {{/if}} -->
+                            {{# if role}} <!-- haven't tested the code below yet -->
+                                <div class="section"><h2>Role: {{role}}</h2></div>
+                                <div class="section"><h2>Branch: {{branch}}</h2></div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </main>
+{{> footer}}
 </template>
