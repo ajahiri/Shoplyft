@@ -2,24 +2,63 @@
 {{> navigation}}
     <main>
         {{#if currentUser}}
-            <div class="container section">
-                <div class="row center">
+            <div class="section">
+                <div class="row align-left">
                     <div class="col s10 offset-s1">
                         <div class="card-panel grey lighten-4">
-                            <i class="material-icons center large blue-text">account_circle</i>
-                            <h4 class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4>
-                            <h6 class="id"><span class="blue-text">ID: </span>{{getId}}</h6>
-                            <div class="section"><h5 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h5></div>
-                            <!-- {{# if !verified}}
+                            <i class="material-icons large blue-text">account_circle</i>
+                            <h4 class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4> <!-- there is a bug in all text fields where long strings run of the screen -->
+                            <div class=divider></div>
+                            <div class="section"><h4 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h4></div>
+                            <!-- {{#unless verified}}
                                 IF not verified, show a notification 
-                            {{/if}} -->
-                            {{# if role}} <!-- haven't tested the code below yet -->
-                                <div class="section"><h2><span class="blue-text">Role: </span>{{role}}</h2></div>
-                                <div class="section"><h2><span class="blue-text">Branch: </span>{{branch}}</h2></div>
+                            {{/unless}} -->
+                            <div class=divider></div>
+                            {{#if isInRole 'seller'}}
+                                <div class="section"><h4><span class="blue-text">Role: </span>{{getBranch}}</h4></div> <!-- THIS IS getBranch FOR TESTING -->
+                                <div class=divider></div>
+                                {{#if hasBranch}}
+                                    <div class="section"><h4><span class="blue-text">Branch: </span>{{getBranch}}</h4></div>
+                                    <div class=divider></div>
+                                    {{#else}}
+                                        <div class="section"><h4><span class="blue-text">Branch: </span>Not Assigned</h4></div>
+                                        <div class=divider></div>
+                                    {{/else}}
+                                {{/if}}
+                            {{/if}}
+                            {{#if isInRole 'admin'}}
+                                {{#unless isInRole 'seller'}}
+                                    <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div>
+                                    <div class=divider></div>
+                                {{/unless}}
                             {{/if}}
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Transaction history table -->
+        <div class="section"></div>
+            <h3 class="center">Transaction History</h3>
+            <div class="card-panel col s10 offset-s1">
+                <table class="resposive-table grey lighten-4">
+                    <thead>
+                    <tr>
+                        <th class="blue-text">Name</th>
+                        <th class="blue-text">Transaction Details</th>
+                        <th class="blue-text">Transaction Date</th>
+                        <th class="blue-text">Item Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- {{#each transaction}}  -->
+                    <tr class="hoverable">
+                        <td>Alvin</td>
+                        <td>Eclair</td>
+                        <td>26 September 2019</td>
+                        <td>$0.87</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         {{/if}}
     </main>

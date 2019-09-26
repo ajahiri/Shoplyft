@@ -5,23 +5,27 @@ import '../../components/userList/userList.js';
 Template.App_MyAccount.helpers({
     getUsername() {
         return Meteor.user().username;
-    }
-});
-
-Template.App_MyAccount.helpers({
+    },
     getEmail() {
         return Meteor.user().emails[0].address;
-    }
-});
-
-Template.App_MyAccount.helpers({
+    },
     verified() {
         return Meteor.user().emails[0].verified;
-    }
-});
-
-Template.App_MyAccount.helpers({
+    },
+    getRoles() {
+        if (Meteor.user().roles) {
+            return Meteor.user().roles;
+        }
+    },
     getId() {
         return Meteor.user()._id;
+    },
+    getBranch() {
+            return Branches.findOne({_id: Meteor.user().allocatedBranch}.name);
+    },
+    hasBranch() {
+        if (Branches.findOne({_id: Meteor.user().allocatedBranch}.name)) {
+            return true;
+        }   
     }
 });

@@ -8,4 +8,4 @@ Meteor.users.deny({
   update() { return true; }
 });
 
-Roles.addUsersToRoles('X7neTbLQi8NZBTKEB', 'admin');
+Roles.addUsersToRoles('aT9TgRP5EWSueDh3F', 'admin');
