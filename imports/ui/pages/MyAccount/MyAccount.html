@@ -11,26 +11,25 @@
                             <div class=divider></div>
                             <div class="section"><h4 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h4></div>
                             <!-- {{#unless verified}}
-                                IF not verified, show a notification 
+                                IF not verified, show a notification
                             {{/unless}} -->
                             <div class=divider></div>
-                            {{#if isInRole 'seller'}}
-                                <div class="section"><h4><span class="blue-text">Role: </span>{{getBranch}}</h4></div> <!-- THIS IS getBranch FOR TESTING -->
-                                <div class=divider></div>
-                                {{#if hasBranch}}
-                                    <div class="section"><h4><span class="blue-text">Branch: </span>{{getBranch}}</h4></div>
-                                    <div class=divider></div>
-                                    {{#else}}
-                                        <div class="section"><h4><span class="blue-text">Branch: </span>Not Assigned</h4></div>
-                                        <div class=divider></div>
-                                    {{/else}}
-                                {{/if}}
-                            {{/if}}
                             {{#if isInRole 'admin'}}
                                 {{#unless isInRole 'seller'}}
                                     <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div>
                                     <div class=divider></div>
                                 {{/unless}}
+                            {{/if}}
+                            {{#if isInRole 'seller'}}
+                                <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div> <!-- THIS IS getBranch FOR TESTING -->
+                                <div class=divider></div>
+                                {{#if hasBranch}}
+                                    <div class="section"><h4><span class="blue-text">Branch: </span>{{getBranch}}</h4></div>
+                                    <div class=divider></div>
+                                {{else}}
+                                    <div class="section"><h4><span class="blue-text">Branch: </span>Not Assigned</h4></div>
+                                    <div class=divider></div>
+                                {{/if}}
                             {{/if}}
                         </div>
                     </div>

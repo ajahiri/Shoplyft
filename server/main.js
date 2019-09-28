@@ -8,4 +8,16 @@ Meteor.users.deny({
   update() { return true; }
 });
 
-Roles.addUsersToRoles('aT9TgRP5EWSueDh3F', 'admin');
+//Following Publish needed to have allocatedBranch attribute given to clients.
+Meteor.publish('userData', function () {
+  if (this.userId) {
+    return Meteor.users.find({ _id: this.userId }, {
+      fields: { allocatedBranch: 1}
+    });
+  } else {
+    this.ready();
+  }
+});
+
+//Used to add a preset user to admin role. For testing.
+//Roles.addUsersToRoles('GhgDfRGgEhCbSz7JH', 'admin');

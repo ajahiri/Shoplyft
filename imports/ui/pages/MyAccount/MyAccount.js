@@ -1,6 +1,11 @@
 import './MyAccount.html';
 import { Meteor } from 'meteor/meteor';
-import '../../components/userList/userList.js';
+import { Branches } from '../../../api/branches/branches.js';
+
+Template.App_MyAccount.onCreated(function(){
+  Meteor.subscribe('userData');
+  Meteor.subscribe('branchesList');
+});
 
 Template.App_MyAccount.helpers({
     getUsername() {
@@ -17,15 +22,22 @@ Template.App_MyAccount.helpers({
             return Meteor.user().roles;
         }
     },
-    getId() {
-        return Meteor.user()._id;
-    },
     getBranch() {
-            return Branches.findOne({_id: Meteor.user().allocatedBranch}.name);
+      //Check if the user has an allocated Branch first.
+      //This is important to avoid errors.
+      //We can then access the branch attributes within the HTML code using Spacebars i.e. {{getBranch.name}}
+      if (Meteor.user().allocatedBranch) {
+        return Branches.findOne({_id: Meteor.user().allocatedBranch}).name;
+      } else {
+        return null;
+      }
     },
+    //Will check if user has an allocatedBranch attribute.
     hasBranch() {
-        if (Branches.findOne({_id: Meteor.user().allocatedBranch}.name)) {
-            return true;
-        }   
+      if (Meteor.user().allocatedBranch) {
+        return true;
+      } else {
+        return false;
+      }
     }
 });
