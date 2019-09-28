@@ -26,6 +26,15 @@ import '../../ui/pages/seller-home/seller-home.js';
 import '../../ui/pages/MyAccount/MyAccount.js';
 
 
+//Product page list view
+import '../../ui/pages/product_list/product_list.js';
+
+//mycart page
+import '../../ui/pages/mycart/mycart.js';
+
+//checkout page
+import '../../ui/pages/checkout/checkout.js';
+
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',
@@ -68,5 +77,26 @@ FlowRouter.route('/MyAccount', {
   name: 'App.MyAccount',
   action() {
     BlazeLayout.render('App_body', { main: 'App_MyAccount' });
+  },
+});
+
+FlowRouter.route('/product_listview', {
+  name: 'product_listview',
+  action() {
+    BlazeLayout.render('product_listview');
+  },
+});
+
+FlowRouter.route('/mycart', {
+  name: 'mycart',
+  action() {
+    BlazeLayout.render('mycart');
+  },
+});
+
+FlowRouter.route('/checkout', {
+  name: 'checkout',
+  action() {
+    BlazeLayout.render('checkout');
   },
 });
