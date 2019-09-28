@@ -22,6 +22,9 @@ import '../../ui/pages/admin-home/admin-home.js';
 import '../../ui/pages/seller-home/seller-home.js';
 //All seller functions should be imported in the seller-home.js
 
+// MyAccount
+import '../../ui/pages/MyAccount/MyAccount.js';
+
 
 //Product page list view
 import '../../ui/pages/product_list/product_list.js';
@@ -70,8 +73,13 @@ FlowRouter.route('/seller-home', {
   },
 });
 
-//Routes added by Lucky, need to double check.
-//Resolved conflict for now
+FlowRouter.route('/MyAccount', {
+  name: 'App.MyAccount',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_MyAccount' });
+  },
+});
+
 FlowRouter.route('/product_listview', {
   name: 'product_listview',
   action() {

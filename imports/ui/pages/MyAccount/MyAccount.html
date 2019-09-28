@@ -1,0 +1,65 @@
+<template name='App_MyAccount'>
+{{> navigation}}
+    <main>
+        {{#if currentUser}}
+            <div class="section">
+                <div class="row align-left">
+                    <div class="col s10 offset-s1">
+                        <div class="card-panel grey lighten-4">
+                            <i class="material-icons large blue-text">account_circle</i>
+                            <h4 class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4> <!-- there is a bug in all text fields where long strings run of the screen -->
+                            <div class=divider></div>
+                            <div class="section"><h4 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h4></div>
+                            <!-- {{#unless verified}}
+                                IF not verified, show a notification
+                            {{/unless}} -->
+                            <div class=divider></div>
+                            {{#if isInRole 'admin'}}
+                                {{#unless isInRole 'seller'}}
+                                    <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div>
+                                    <div class=divider></div>
+                                {{/unless}}
+                            {{/if}}
+                            {{#if isInRole 'seller'}}
+                                <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div> <!-- THIS IS getBranch FOR TESTING -->
+                                <div class=divider></div>
+                                {{#if hasBranch}}
+                                    <div class="section"><h4><span class="blue-text">Branch: </span>{{getBranch}}</h4></div>
+                                    <div class=divider></div>
+                                {{else}}
+                                    <div class="section"><h4><span class="blue-text">Branch: </span>Not Assigned</h4></div>
+                                    <div class=divider></div>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Transaction history table -->
+        <div class="section"></div>
+            <h3 class="center">Transaction History</h3>
+            <div class="card-panel col s10 offset-s1">
+                <table class="resposive-table grey lighten-4">
+                    <thead>
+                    <tr>
+                        <th class="blue-text">Name</th>
+                        <th class="blue-text">Transaction Details</th>
+                        <th class="blue-text">Transaction Date</th>
+                        <th class="blue-text">Item Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- {{#each transaction}}  -->
+                    <tr class="hoverable">
+                        <td>Alvin</td>
+                        <td>Eclair</td>
+                        <td>26 September 2019</td>
+                        <td>$0.87</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        {{/if}}
+    </main>
+{{> footer}}
+</template>

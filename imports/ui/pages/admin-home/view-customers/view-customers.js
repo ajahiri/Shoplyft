@@ -3,6 +3,7 @@ import '../../../components/userList/userList.js';
 
 Template.viewCustomers.onCreated(function() {
   Meteor.subscribe('userList');
+  Meteor.subscribe('branchesAdmin');
 });
 
 var username = new ReactiveVar();//Initialize the search parameter
