@@ -35,6 +35,10 @@ import '../../ui/pages/mycart/mycart.js';
 //checkout page
 import '../../ui/pages/checkout/checkout.js';
 
+//payment confirmation pages
+import '../../ui/pages/payment_confirmation/payment_confirmation.js';
+
+
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',
@@ -98,5 +102,12 @@ FlowRouter.route('/checkout', {
   name: 'checkout',
   action() {
     BlazeLayout.render('checkout');
+  },
+});
+
+FlowRouter.route('/payment_confirm', {
+  name: 'payment_confirm',
+  action() {
+    BlazeLayout.render('payment_confirmation');
   },
 });
