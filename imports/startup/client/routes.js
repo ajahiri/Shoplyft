@@ -25,10 +25,6 @@ import '../../ui/pages/seller-home/seller-home.js';
 // MyAccount
 import '../../ui/pages/MyAccount/MyAccount.js';
 
-
-//Product page list view
-import '../../ui/pages/product_list/product_list.js';
-
 //mycart page
 import '../../ui/pages/mycart/mycart.js';
 
@@ -80,22 +76,15 @@ FlowRouter.route('/MyAccount', {
   },
 });
 
-FlowRouter.route('/product_listview', {
-  name: 'product_listview',
-  action() {
-    BlazeLayout.render('product_listview');
-  },
-});
-
 FlowRouter.route('/mycart', {
-  name: 'mycart',
+  name: 'App.mycart',
   action() {
     BlazeLayout.render('mycart');
   },
 });
 
 FlowRouter.route('/checkout', {
-  name: 'checkout',
+  name: 'App.checkout',
   action() {
     BlazeLayout.render('checkout');
   },

@@ -7,10 +7,24 @@ const productSearch = new ReactiveVar("");
 
 Template.dropdown.onCreated(function() {
     Meteor.subscribe('productList');
+    Meteor.subscribe('userData'); //Needed to know cart contents
+});
+
+Template.productItem.events({
+  'click #addtoCartButton' (event, template) {
+    event.preventDefault();
+    //console.log(template.data);
+    Meteor.call('shoppingCart.addCartItem', {
+      prodId: template.data._id,
+      qty: 1,
+    });
+    M.toast({html: 'Item added to cart'});
+  }
 });
 
 Template.products.onRendered(function() {
   viewingBranch.set('promotional');
+  Meteor.subscribe('userCart');
 });
 
 Template.products.helpers({

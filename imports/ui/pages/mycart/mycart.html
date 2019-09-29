@@ -1,9 +1,7 @@
 <template name="mycart">
-    {{>product_page_navigation}}
-    {{>branch_dropdown}}
+    {{>navigation}}
     {{>cart_products}}
-    {{>cart_products}}
-    {{>cart_products}}
-    {{>cart_products}}
-    {{>buy}}
+    <div class="row center">
+      <p><button class="waves-effect waves-light btn" id="buy_btn">Checkout</button></p>
+    </div>
 </template>

@@ -3,6 +3,7 @@ import { Branches } from '../../../../api/branches/branches.js';
 
 Template.viewBranches.onCreated(function() {
     Meteor.subscribe('branchesAdmin');
+    Meteor.subscribe('userList');
 });
 
 Template.viewBranches.helpers({
@@ -28,5 +29,12 @@ Template.branchData.helpers({
     var fullAddress = addressObject.unitNo + " " + addressObject.streetNumber + " "
     + addressObject.street + " " + addressObject.postCode + " " + addressObject.city;
     return fullAddress;
+  },
+  assignedSeller() {
+    if (this.seller) {
+      return Meteor.users.findOne({_id: this.seller}).username;
+    } else {
+      return "None";
+    }
   }
 });
