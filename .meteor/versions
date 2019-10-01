@@ -3,7 +3,7 @@ accounts-password@1.5.1
 alanning:roles@1.2.16
 aldeed:simple-schema@1.5.4
 allow-deny@1.1.0
-altapp:recaptcha@2.0.1
+appshore:recaptcha@2.1.0
 arillo:flow-router-helpers@0.5.2
 autoupdate@1.6.0
 babel-compiler@7.3.4
