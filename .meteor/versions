@@ -3,6 +3,7 @@ accounts-password@1.5.1
 alanning:roles@1.2.16
 aldeed:simple-schema@1.5.4
 allow-deny@1.1.0
+altapp:recaptcha@2.0.1
 arillo:flow-router-helpers@0.5.2
 autoupdate@1.6.0
 babel-compiler@7.3.4
@@ -47,6 +48,7 @@ fetch@0.1.1
 fortawesome:fontawesome@4.7.0
 fourseven:scss@4.12.0
 geojson-utils@1.0.10
+handlebars@1.0.7
 hot-code-push@1.0.4
 html-tools@1.0.11
 htmljs@1.0.11
