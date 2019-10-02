@@ -11,3 +11,7 @@ import '../../api/branches/methods.js';
 //Cart API
 import '../../api/shoppingCart/server/publications.js';
 import '../../api/shoppingCart/methods.js';
+
+//Orders API
+import '../../api/orders/server/publications.js';
+import '../../api/orders/methods.js';

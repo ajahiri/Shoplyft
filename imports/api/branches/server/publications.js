@@ -35,3 +35,6 @@ Meteor.publish('branchesList', function() {
 Meteor.publish('productList', function() {
   return Products.find({}, {});
 });
+Meteor.publish('specificProduct', function(id) {
+  return Products.find({_id: id});
+});

@@ -31,6 +31,7 @@ Template.addNewProduct.events({
         M.toast({html: 'Unable to add new Product. Error: ' + err.reason});
       } else {
         //success
+        target.reset();
         M.toast({html: 'Added product ' + productName + '.'});
       }
     });

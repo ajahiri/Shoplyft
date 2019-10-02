@@ -1,4 +1,6 @@
 import './userPromoteEntry.html';
+import { Branches } from '../../../api/branches/branches.js';
+
 Template.userPromoteEntry.helpers({
   role() {
     if (this.roles) {
@@ -6,8 +8,8 @@ Template.userPromoteEntry.helpers({
     }
   },
   branch() {
-    if (this.branch) {
-      return this.branch;
+    if (this.allocatedBranch) {
+      return Branches.findOne({_id: this.allocatedBranch}).name;
     } else {
       return 'Unassigned';
     }

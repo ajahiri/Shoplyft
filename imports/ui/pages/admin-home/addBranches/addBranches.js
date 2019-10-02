@@ -53,6 +53,7 @@ Template.addBranches.events({
         M.toast({html: 'Unable to add new Branch. Error: ' + err.reason});
       } else {
         //success
+        target.reset();
         M.toast({html: 'Added branch ' + branchName + '.'});
       }
     });

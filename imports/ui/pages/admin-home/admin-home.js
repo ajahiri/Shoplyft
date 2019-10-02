@@ -6,8 +6,6 @@ import './admin-home.html';
 import './view-branches/view-branches.js';
 // Add Branches
 import './addBranches/addBranches.js';
-// Add/Delete Products
-import './delProducts/delProducts.js';
 // View Customers
 import './view-customers/view-customers.js';
 // Add Sellers
@@ -24,13 +22,6 @@ FlowRouter.route('/admin-home/addBranches', {
   name: 'App.admin-home.addBranches',
   action() {
     BlazeLayout.render('App_body', { main: 'addBranches' });
-  },
-});
-
-FlowRouter.route('/admin-home/delProducts', {
-  name: 'App.admin-home.delProducts',
-  action() {
-    BlazeLayout.render('App_body', { main: 'delProducts' });
   },
 });
 

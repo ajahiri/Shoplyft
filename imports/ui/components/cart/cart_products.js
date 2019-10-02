@@ -1,6 +1,7 @@
 import './cart_products.html';
 import { Products } from '../../../api/branches/branches.js';
 
+
 Template.cart_products.onCreated(function() {
     Meteor.subscribe('productList');
     Meteor.subscribe('userData'); //Needed to know cart contents
@@ -13,7 +14,21 @@ Template.cart_products.helpers({
     } else {
       return;
     }
-  }
+  },
+  cartTotal() {
+    if (Meteor.user()) {
+      if (Meteor.user().cart) {
+        var cartTotal = 0;
+        Meteor.user().cart.forEach(function(element) {
+          //Get product Price
+          var price = Products.findOne({_id: element.prodId}).price;
+          cartTotal += (parseFloat(price) * parseInt(element.qty));
+        });
+        return (cartTotal);
+      }
+    }
+  },
+
 });
 
 Template.cartEntry.events({
@@ -35,5 +50,8 @@ Template.cartEntry.helpers({
   },
   itemURL() {
     return Products.findOne({_id: this.prodId}).imageURL;
+  },
+  itemStock() {
+    return Products.findOne({_id: this.prodId}).stock;
   }
 });

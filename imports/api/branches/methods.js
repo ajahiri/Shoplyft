@@ -3,6 +3,25 @@ import { Branches } from './branches.js';
 import { Products } from './branches.js';
 
 Meteor.methods({
+  'addStock'(itemID, amount) {
+    if (Roles.userIsInRole(this.userId, 'seller')) {
+      let branchID = Products.findOne({_id: itemID}).branch;
+      if (Branches.findOne({_id:branchID}).seller === Meteor.userId()) {
+        Products.update({_id: itemID}, {$inc: {stock: amount}}  )
+      } else {
+        throw new Meteor.Error('Authorization error.','Item does not belong to your branch!');
+      }
+    } else {
+      throw new Meteor.Error('Authorization error.','Not authorised!');
+    }
+  },
+  'deleteProduct'(itemID) {
+    if (Roles.userIsInRole(this.userId, 'admin')) {
+      Products.remove({_id: itemID}, {justOne: true});
+    } else {
+      throw new Meteor.Error('Authorization error.','Not authorised!');
+    }
+  },
   'addBranches.addNewBranch'({
     branchName,
     phoneNumber,
@@ -39,7 +58,7 @@ Meteor.methods({
         Branches.insert(newBranch);
       }
     } else {
-      return new Meteor.Error('Authorization error.','Not authorised!');
+      throw new Meteor.Error('Authorization error.','Not authorised!');
     }
   },
   'addNewProduct.addProduct'({

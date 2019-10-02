@@ -1,7 +1,37 @@
-<template name='App_sellerHome_view-transactions'>
+<template name='sellerTransactions'>
   {{> navigation}}
   <main>
-    <h1>View Transation History</h1>
+    <div class="row">
+      <div class="section">
+        <h3 class="center">Transaction History</h3>
+        <div class="col s10 offset-s1">
+            <table class="resposive-table grey lighten-4">
+                <thead>
+                <tr>
+                    <th class="blue-text">Order ID</th>
+                    <th class="blue-text">Billing Name</th>
+                    <th class="blue-text">Order Date</th>
+                    <th class="blue-text">Order Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {{#each orders}}
+                    {{>sellerTransactionEntry}}
+                  {{/each}}
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
   </main>
   {{> footer}}
+</template>
+
+<template name="sellerTransactionEntry">
+  <tr class="hoverable">
+      <td>{{_id}}</td>
+      <td>{{billingInfo.fullName}}</td>
+      <td>{{orderDate}}</td>
+      <td>${{totalPrice}}</td>
+  </tr>
 </template>

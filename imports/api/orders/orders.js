@@ -3,18 +3,25 @@ export const Orders = new Mongo.Collection('order');
 Orders.schema = new SimpleSchema({
   _id: { type: String },
   owner: { type: String },    //UserID of the owner of this order
-  branch: { type: String },   //ID of branch order was made from
+  orderDate: { type: Date },
   itemList: { type: [Object] },   //This means the cart will be an array of objects, (product ID and qty & price of !!EACH!!!)
-  "itemList.productId": {
+  "itemList.itemID": {
     type: String
   },
-  "itemList.quantity": {
-    type: Number
+  "itemList.name": {
+    type: String
   },
   "itemList.price": {
     type: Number
   },
-  totalPrice: { type: Number },
-  payment: { type: Object },   //Will have to think about this later.
-  shipping: { type: Object }   //This should just be form the users address. WIll figure out how we handle this later.
+  "itemList.quantity": {
+    type: Number
+  },
+  "itemList.supplier": {
+    type: String
+  },
+  branches: { type: Object },   //Need a branches list of IDs to make it easy to do some mor estyff laterer
+  totalPrice: { type: Number }, //To be computed in server method.
+  payment: { type: Object },   //Parse payment info from client.
+  billingInfo: { type: Object }   //Parse billing info from client.
 });

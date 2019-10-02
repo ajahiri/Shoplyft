@@ -19,9 +19,30 @@
             <label for="password">Password</label>
           </div>
         </div>
+        <a class="modal-trigger" href="#forgotPasswordModal">Forgot password?</a>
         <button type="submit" form="login-form" class="row col s12 blue lighten-5 black-text waves-effect waves-light btn">Login</button>
         <a href="{{pathFor 'signup'}}" class="row col s12 blue waves-effect waves-light btn">New Account</a>
       </form>
+
+      <!-- Modal Structure -->
+      <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+          <h4>Password Reset</h4>
+          <p>Please enter your email for reset:</p>
+          <form id="resetForm">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="resetEmail" required type="email" class="validate">
+                <label for="resetEmail">Email</label>
+              </div>
+              <button type="submit" form="resetForm" class="row col s12 blue waves-effect waves-light btn">Send Email</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+      </div>
     </div>
     {{/if}}
   </div>

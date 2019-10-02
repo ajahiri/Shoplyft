@@ -2,10 +2,19 @@
 
 import '/imports/startup/server';
 import '/imports/startup/both';
-
 // Deny all client-side updates to user documents
 Meteor.users.deny({
   update() { return true; }
+});
+
+Meteor.methods({
+  sendVerify() {
+    try {
+      Accounts.sendVerificationEmail(this.userId);
+    } catch (e) {
+      throw new Meteor.Error('email error', 'Failed to send verification email!');
+    }
+  },
 });
 
 //Following Publish needed to have allocatedBranch attribute given to clients.

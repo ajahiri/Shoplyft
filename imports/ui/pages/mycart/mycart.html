@@ -1,7 +1,10 @@
 <template name="mycart">
     {{>navigation}}
-    {{>cart_products}}
-    <div class="row center">
-      <p><button class="waves-effect waves-light btn" id="buy_btn">Checkout</button></p>
-    </div>
+    <main class="container">
+      {{>cart_products}}
+      <div class="col s12 center">
+        <p><a href="{{pathFor '/checkout'}}" class="waves-effect waves-light btn" id="buy_btn">Checkout</a></p>
+      </div>
+    </main>
+    {{>footer}}
 </template>

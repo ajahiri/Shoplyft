@@ -44,7 +44,7 @@ Template.signup_form.events({
 
     Accounts.onLogin(function() {
       FlowRouter.go('App.home');
-      M.toast({html: 'Successfully signed up!'});
+      M.toast({html: 'Successfully signed in!'});
     });
   },
   'click #logOutButton'(event) {

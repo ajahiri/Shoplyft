@@ -1,6 +1,42 @@
 // Import server startup through a single index entry point
 import { Roles } from 'meteor/alanning:roles'
 
+Meteor.startup(function() {
+  Accounts.config({sendVerificationEmail: true});
+  process.env.MAIL_URL = 'smtp://annulusstudios:1RVhswN31ctXI8fXDvat@smtp.sendgrid.net:587';
+  reCAPTCHA.config({
+      privatekey: '6LemTbsUAAAAAOzHQK54SuwyoxFrSuSk16k_-_VU'
+  });
+
+  Accounts.emailTemplates.siteName = 'Shoplyft';
+  Accounts.emailTemplates.from = 'ShopLyft NoReply <no-reply@shoplyft.me>';
+
+  Accounts.emailTemplates.enrollAccount.subject = (user) => {
+    return `Welcome to ShopLyft.me, ${user.profile.name}`;
+  };
+
+  Accounts.emailTemplates.enrollAccount.text = (user, url) => {
+    return 'You have been selected to participate in building a better future!'
+      + ' To activate your account, simply click the link below:\n\n'
+      + url;
+  };
+
+  Accounts.emailTemplates.resetPassword.from = () => {
+    // Overrides the value set in `Accounts.emailTemplates.from` when resetting
+    // passwords.
+    return 'ShopLyft.me Password Reset <no-reply@shoplyft.me>';
+  };
+  Accounts.emailTemplates.verifyEmail = {
+     subject() {
+        return "Activate your ShopLyft account now!";
+     },
+     text(user, url) {
+        return `Hey ${user}! Verify your e-mail by following this link: ${url}`;
+     }
+  };
+
+});
+
 // Ensuring every user has an email address, should be in server-side code
 Accounts.validateNewUser((user) => {
   new SimpleSchema({

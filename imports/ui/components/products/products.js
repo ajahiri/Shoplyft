@@ -10,6 +10,39 @@ Template.dropdown.onCreated(function() {
     Meteor.subscribe('userData'); //Needed to know cart contents
 });
 
+Template.dropdown.events({
+  'keyup #productSearch'(event, template) {
+    //Prevent default browser form submission
+    event.preventDefault();
+    //Get our data values from the DOM
+    var searchVal = template.$("#productSearch").val();
+    if(searchVal.length == 0) {
+      productSearch.set("");
+      //This if statement fixes a bug where if admin backspaces to empty string
+      //it will show nothing. This makes sure it resets name reactiveVar.
+    } else if(searchVal) {
+      productSearch.set(searchVal);
+    }
+  }
+});
+
+Template.dropdown.events({
+  'change #branchSelector'(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    viewingBranch.set(target.value);
+  }
+})
+
+Template.productItem.helpers({
+  outofStock() {
+    if (this.stock <= 0) {
+      return true;
+    }
+  }
+});
+
 Template.productItem.events({
   'click #addtoCartButton' (event, template) {
     event.preventDefault();
@@ -53,28 +86,3 @@ Template.products.helpers({
     }
   },
 });
-
-Template.dropdown.events({
-  'keyup #productSearch'(event, template) {
-    //Prevent default browser form submission
-    event.preventDefault();
-    //Get our data values from the DOM
-    var searchVal = template.$("#productSearch").val();
-    if(searchVal.length == 0) {
-      productSearch.set("");
-      //This if statement fixes a bug where if admin backspaces to empty string
-      //it will show nothing. This makes sure it resets name reactiveVar.
-    } else if(searchVal) {
-      productSearch.set(searchVal);
-    }
-  }
-});
-
-Template.dropdown.events({
-  'change #branchSelector'(event) {
-    event.preventDefault();
-
-    const target = event.target;
-    viewingBranch.set(target.value);
-  }
-})

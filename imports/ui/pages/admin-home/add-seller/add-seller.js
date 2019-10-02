@@ -3,6 +3,7 @@ import '../../../components/userPromoteEntry/userPromoteEntry.js';
 
 Template.addSeller.onCreated(function() {
   Meteor.subscribe('userList');
+  Meteor.subscribe('branchesAdmin');
 });
 
 var username = new ReactiveVar();//Initialize the search parameter

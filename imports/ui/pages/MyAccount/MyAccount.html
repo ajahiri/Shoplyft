@@ -1,82 +1,104 @@
 <template name='App_MyAccount'>
 {{> navigation}}
     <main>
-        {{#if currentUser}}
-            <div class="section">
-                <div class="row align-left">
-                    <div class="col s10 offset-s1">
-                        <div class="card-panel grey lighten-4">
-                            <i class="material-icons large blue-text">account_circle</i>
-                            <h4 class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4> <!-- there is a bug in all text fields where long strings run of the screen -->
-                            <div class=divider></div>
-                            <div class="section"><h4 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h4></div>
-                            <!-- {{#unless verified}}
-                                IF not verified, show a notification
-                            {{/unless}} -->
-                            <div class=divider></div>
-                            {{#if isInRole 'admin'}}
-                                {{#unless isInRole 'seller'}}
-                                    <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div>
-                                    <div class=divider></div>
-                                {{/unless}}
-                            {{/if}}
-                            {{#if isInRole 'seller'}}
-                                <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div> <!-- THIS IS getBranch FOR TESTING -->
-                                <div class=divider></div>
-                                {{#if hasBranch}}
-                                    <div class="section"><h4><span class="blue-text">Branch: </span>{{getBranch}}</h4></div>
-                                    <div class=divider></div>
-                                {{else}}
-                                    <div class="section"><h4><span class="blue-text">Branch: </span>Not Assigned</h4></div>
-                                    <div class=divider></div>
-                                {{/if}}
-                            {{/if}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Change Password-->
-            <div class="container row">
-                <h3 class="center">Change Password</h3>
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="old_password" type="text" class="validate">
-                      <label for="old_password">Old Password</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <input id="new_password" type="text" class="validate">
-                      <label for="new_password">New Password</label>
-                    </div>
+      {{#if currentUser}}
+        <div class="section">
+          <div class="row">
+            <div class="col s12 m4 offset-m1 align-left">
+              <div class="card-panel grey lighten-4">
+                  <i class="material-icons large blue-text">account_circle</i>
+                  <h4 class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4> <!-- there is a bug in all text fields where long strings run of the screen -->
+                  <div class=divider></div>
+                  <div class="section"><h4 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h4></div>
+                  <div class=divider></div>
+                  <div class="section">
+                    <span class="blue-text">
+                      <h4 class="email">Verified:
+                        {{#if verified}}<i class="material-icons green-text">check_circle</i>
+                        {{else}} <i class="material-icons red-text">close</i>{{/if}}
+                      </h4>
+                      {{#unless verified}}
+                      <a href="" id="sendVerify">Send verification email?</a>
+                      {{/unless}}
+                    </span>
                   </div>
-                </form>
-                <button type="submit" form="changepassword_form" class="row col s12 blue waves-effect waves-light btn">Change Password</button>
+                  <!-- {{#unless verified}}
+                      IF not verified, show a notification
+                  {{/unless}} -->
+                  <div class=divider></div>
+                  {{#if isInRole 'admin'}}
+                      {{#unless isInRole 'seller'}}
+                          <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div>
+                          <div class=divider></div>
+                      {{/unless}}
+                  {{/if}}
+                  {{#if isInRole 'seller'}}
+                      <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div> <!-- THIS IS getBranch FOR TESTING -->
+                      <div class=divider></div>
+                      {{#if hasBranch}}
+                          <div class="section"><h4><span class="blue-text">Branch: </span>{{getBranch}}</h4></div>
+                          <div class=divider></div>
+                      {{else}}
+                          <div class="section"><h4><span class="blue-text">Branch: </span>Not Assigned</h4></div>
+                          <div class=divider></div>
+                      {{/if}}
+                  {{/if}}
+              </div>
             </div>
-            <!-- Transaction history table -->
-        <div class="section"></div>
+            <div class="col s12 m6">
+              <h3 class="center">Change Password</h3>
+              <form id="changePasswordForm" class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="oldPassword" type="password" class="validate">
+                    <label for="oldPassword">Old Password</label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input id="newPassword" type="password" class="validate">
+                    <label for="newPassword">New Password</label>
+                  </div>
+                </div>
+                <button type="submit" form="changePasswordForm" class="row col s12 blue waves-effect waves-light btn">Change Password</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--Change Password-->
+
+        <!-- Transaction history table -->
+        <div class="row">
+          <div class="section">
             <h3 class="center">Transaction History</h3>
-            <div class="card-panel col s10 offset-s1">
+            <div class="col s10 offset-s1">
                 <table class="resposive-table grey lighten-4">
                     <thead>
                     <tr>
-                        <th class="blue-text">Name</th>
-                        <th class="blue-text">Transaction Details</th>
-                        <th class="blue-text">Transaction Date</th>
-                        <th class="blue-text">Item Price</th>
+                        <th class="blue-text">Order ID</th>
+                        <th class="blue-text">Billing Name</th>
+                        <th class="blue-text">Order Date</th>
+                        <th class="blue-text">Order Total</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- {{#each transaction}}  -->
-                    <tr class="hoverable">
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>26 September 2019</td>
-                        <td>$0.87</td>
-                    </tr>
+                      {{#each orders}}
+                        {{>transactionEntry}}
+                      {{/each}}
                     </tbody>
                 </table>
             </div>
+          </div>
+        </div>
+
         {{/if}}
     </main>
 {{> footer}}
+</template>
+
+<template name="transactionEntry">
+  <tr class="hoverable">
+      <td>{{_id}}</td>
+      <td>{{billingInfo.fullName}}</td>
+      <td>{{orderDate}}</td>
+      <td>${{totalPrice}}</td>
+  </tr>
 </template>
