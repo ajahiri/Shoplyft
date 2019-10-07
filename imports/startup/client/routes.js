@@ -77,6 +77,13 @@ FlowRouter.route('/signup', {
   },
 });
 
+FlowRouter.route('/credits', {
+  name: 'App.credits',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_credits' });
+  },
+});
+
 //Respective routes for admin pages are in admin-home js
 FlowRouter.route('/admin-home', {
   name: 'App.admin-home',
