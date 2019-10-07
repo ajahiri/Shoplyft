@@ -3,6 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { Branches } from '../../../api/branches/branches.js';
 import { Orders } from '../../../api/orders/orders.js';
 
+Template.App_MyAccount.onRendered(function(){
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
+
 Template.App_MyAccount.onCreated(function(){
   Meteor.subscribe('userData');
   Meteor.subscribe('branchesList');
