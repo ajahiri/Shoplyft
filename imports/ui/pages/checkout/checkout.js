@@ -40,6 +40,7 @@ Template.billing_Info.events({
     isLoading.set(true)
     Meteor.call('makePayment', billingInfo, creditCard, (error, result) => {
       if (error) {
+        isLoading.set(false)
         M.toast({html: error.reason});
       } else {
         isLoading.set(false);
