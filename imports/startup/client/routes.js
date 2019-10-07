@@ -40,6 +40,9 @@ import '../../ui/components/product_detailview/product_detailview.js';
 //PaymentSuccess page
 import '../../ui/pages/orderSuccess/orderSuccess.js';
 
+//Website Credits page
+import '../../ui/pages/websiteCredits/websiteCredits.js';
+
 Accounts.onEmailVerificationLink(function(token, done){
   try {
     Accounts.verifyEmail(token);
