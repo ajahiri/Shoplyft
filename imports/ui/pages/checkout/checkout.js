@@ -1,8 +1,15 @@
 import './checkout.html';
 import '../../components/dropdown/dropdown.js';
 
-Template.billing_Info.helpers({
+var isLoading = new ReactiveVar(false);
 
+Template.billing_Info.onCreated(function() {
+});
+
+Template.billing_Info.helpers({
+  isLoading() {
+    return isLoading.get();
+  },
 });
 
 Template.billing_Info.events({
@@ -30,10 +37,12 @@ Template.billing_Info.events({
 
     var purchaseItems = Meteor.user().cart;
     //console.log(purchaseItems);
+    isLoading.set(true)
     Meteor.call('makePayment', billingInfo, creditCard, (error, result) => {
       if (error) {
         M.toast({html: error.reason});
       } else {
+        isLoading.set(false);
         M.toast({html: 'Order successful!'});
         FlowRouter.go('App.payment_success');
       }

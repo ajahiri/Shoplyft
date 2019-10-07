@@ -136,4 +136,5 @@ FlowRouter.route('/orderSuccess', {
   action() {
     BlazeLayout.render('orderSuccess', { main: 'App_MyAccount' });
   },
+  
 });
