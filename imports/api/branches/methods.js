@@ -35,6 +35,7 @@ Meteor.methods({
     streetNumber,
     streetName,
     city,
+    state,
     postCode,
     seller
   }) {
@@ -44,6 +45,7 @@ Meteor.methods({
         street: streetName,
         streetNumber: streetNumber,
         city: city,
+        state: state,
         postCode: postCode
       };
       const newBranch = {

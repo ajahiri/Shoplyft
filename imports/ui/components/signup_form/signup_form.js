@@ -41,11 +41,6 @@ Template.signup_form.events({
     } catch (e) {
       M.toast({html: e});
     }
-
-    Accounts.onLogin(function() {
-      FlowRouter.go('App.home');
-      M.toast({html: 'Successfully signed in!'});
-    });
   },
   'click #logOutButton'(event) {
     Meteor.logout();

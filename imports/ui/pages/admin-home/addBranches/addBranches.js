@@ -1,5 +1,10 @@
 import './addBranches.html';
 
+Template.addBranches.onRendered(function() {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems);
+})
+
 Template.addBranches.onCreated(function() {
   Meteor.subscribe('userList');
 });
@@ -34,6 +39,7 @@ Template.addBranches.events({
     const streetNumber = target.street_number.value;
     const streetName = target.street_name.value;
     const city = target.city.value;
+    const state = target.stateSelector.value;
     const postCode = parseInt(target.postCode.value);
     const sellerID = target.sellerSelector.value;
 
@@ -46,6 +52,7 @@ Template.addBranches.events({
       streetNumber: streetNumber,
       streetName: streetName,
       city: city,
+      state: state,
       postCode: postCode,
       seller: sellerID
     }, (err, res) => {
