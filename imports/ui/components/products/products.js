@@ -55,9 +55,14 @@ Template.productItem.events({
   }
 });
 
-Template.products.onRendered(function() {
+Template.products.onCreated(function() {
   viewingBranch.set('promotional');
   Meteor.subscribe('userCart');
+});
+
+Template.productItem.onRendered(function() {
+  var elems = document.querySelectorAll('.tooltipped');
+  var instances = M.Tooltip.init(elems);
 });
 
 Template.products.helpers({

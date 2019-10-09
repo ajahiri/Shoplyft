@@ -8,23 +8,31 @@
 
 <template name="productItem">
   <div class="col s12 m6 l4 xl3">
-    <div class="card z-depth-2 hoverable">
+    <div class="card medium hoverable">
       <div class="card-image">
-        <a href="/products/{{_id}}"><img src="{{imageURL}}"></a>
+        <a href="/products/{{_id}}"><img  id="card-image" src="{{imageURL}}"></a>
+      </div>
+
+      <div class="card-fab">
         {{#if outofStock}}
         <a id="addtoCartButton" class="disabled btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
         {{else}}
         <a id="addtoCartButton" class="btn-floating btn-large halfway-fab waves-effect waves-light blue"><i class="material-icons">add_shopping_cart</i></a>
         {{/if}}
+      </div>
 
-      </div>
       <div class="card-content">
-      <span class="card-title">{{name}}</span>
-        <p>${{price}} AUD</p>
-        {{#if outofStock}}
-        <p class="red-text">Out of stock!</p>
-        {{/if}}
+        <p class="card-title tooltipped" data-position="bottom" data-tooltip="{{name}}">{{name}}</p>
       </div>
+
+      <div class="card-action">
+        <p class="green-text"><b>${{price}} AUD</b>
+        {{#if outofStock}}
+        <span class="red-text right">Out of stock!</span>
+        {{/if}}
+        </p>
+      </div>
+
     </div>
   </div>
 </template>

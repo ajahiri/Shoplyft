@@ -1,9 +1,11 @@
-<template name="mycart">
+<template name="App_MyCart">
     {{>navigation}}
-    <main class="container">
-      {{>cart_products}}
-      <div class="col s12 center">
-        <p><a href="{{pathFor '/checkout'}}" class="waves-effect waves-light btn" id="buy_btn">Checkout</a></p>
+    <main>
+      <div class="container">
+        {{>cart_products}}
+        <div class="col s12 center">
+          <p><a href="{{pathFor '/checkout'}}" class="waves-effect waves-light btn" id="buy_btn">Checkout</a></p>
+        </div>
       </div>
     </main>
     {{>footer}}

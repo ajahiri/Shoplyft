@@ -1,8 +1,11 @@
-<template name="checkout">
+<template name="App_Checkout">
   {{>navigation}}
-  <div class="container">
-    {{>billing_Info}}
-  </div>
+  <main>
+    <div class="container">
+      {{>billing_Info}}
+    </div>
+  </main>
+  {{> footer}}
 </template>
 
 <template name="billing_Info">
@@ -17,7 +20,7 @@
   </div>
   {{else}}
   <div class="row">
-    <div class="col s12 m8 offset-m1 right">
+    <div class="col s12 ">
       <div class="row">
         <h4>Cart Summary</h4>
         <div>
@@ -25,32 +28,32 @@
         </div>
       </div>
     </div>
-    <div class="col s12 m3 left">
+    <div class="col s12">
       <form id="checkoutForm" name="checkoutForm">
-        <div class="row">
+        <div class="row col s12 m6 section">
           <h4>Billing Information</h4>
           <div>
             <label class="left" for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="fname">
+            <input value="{{billing.fullName}}" required type="text" id="fname" name="fname">
             <label class="left" for="phone"><i class="fa fa-envelope"></i> Phone Number</label>
-            <input  type="tel" id="phone" name="phone">
+            <input value="{{billing.phone}}" required type="tel" id="phone" name="phone">
             <label class="left" for="street"><i class="fa fa-address-card-o"></i> Street</label>
-            <input type="text" id="street" name="street">
+            <input value="{{billing.street}}" required type="text" id="street" name="street">
             <label class="left" for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city">
+            <input value="{{billing.city}}" required type="text" id="city" name="city">
             <label class="left" for="state">State</label>
-            <input type="text" id="state" name="state">
+            <input value="{{billing.state}}" required type="text" id="state" name="state">
             <label class="left" for="country">Country</label>
-            <input type="text" id="country" name="country">
+            <input value="{{billing.country}}" required type="text" id="country" name="country">
             <label class="left" for="zip">Zip</label>
-            <input type="text" id="zip" name="zip">
+            <input value="{{billing.zip}}" required type="text" id="zip" name="zip">
             <label>
               <input id="rememberBilling" type="checkbox" class="filled-in" />
               <span>Remember billing information?</span>
             </label>
           </div>
         </div>
-        <div class = "row">
+        <div class = "row col s12 m5 offset-m1 section">
            <h4>Payment</h4>
            <label for="fname">Accepted Cards</label>
            <div class="icon-container">
@@ -60,19 +63,19 @@
              <i class="fa fa-cc-discover" style="color:orange;"></i>
            </div>
            <label class="left" for="cname">Name on Card</label>
-           <input type="text" id="cname" name="cardname">
+           <input required type="text" id="cname" name="cardname">
            <label class="left" for="ccnum">Credit card number</label>
-           <input type="text" id="ccnum" name="cardnumber">
+           <input required type="text" id="ccnum" name="cardnumber">
            <label class="left" for="expmonth">Exp Month</label>
-           <input type="text" id="expmonth" name="expmonth">
+           <input required type="text" id="expmonth" name="expmonth">
 
              <div>
                <label class="left" for="expyear">Exp Year</label>
-               <input type="text" id="expyear" name="expyear">
+               <input required type="text" id="expyear" name="expyear">
              </div>
              <div class>
                <label class="left" for="cvv">CVV</label>
-               <input type="text" id="cvv" name="cvv">
+               <input required type="text" id="cvv" name="cvv">
              </div>
 
          </div>

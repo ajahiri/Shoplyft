@@ -1,0 +1,51 @@
+<template name="order_detailview">
+  {{>navigation}}
+  <main>
+    <div class="container">
+      <div class="row col s12">
+        <h5>Order Details: </h5>
+        <p><b class="red-text">Warning: Some information, branches, products and/or owners may not exist anymore.</b></p>
+        <p><b class="red-text">Strictly for archival purposes.</b></p>
+        <p><b>Order ID: </b>{{order._id}}</p>
+        <p><b>Owner: </b>{{order.owner}}</p>
+        <p><b>Order Date: </b>{{order.orderDate}}</p>
+        <p><b>Total Price: </b>${{order.totalPrice}} AUD</p>
+        <p><b>Involved Branches: </b>{{order.branches}}</p>
+        <table class="highlight">
+        <thead>
+          <tr>
+              <th>Item ID</th>
+              <th>Item Name</th>
+              <th>Item Price</th>
+              <th>Item Quantity</th>
+              <th>Item Supplier/Branch</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each order.itemList}}
+            <tr>
+              <td><a href="/products/{{itemID}}">{{itemID}}</a></td>
+              <td class="truncate tooltipped" data-position="bottom" data-tooltip="{{name}}">{{name}}</td>
+              <td>${{price}} AUD</td>
+              <td>{{quantity}}</td>
+              <td>{{supplier}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+      <h5>Billing Details: </h5>
+
+      <p><b>Billing Name: </b>{{order.billingInfo.fullName}}</p>
+      <p><b>Phone: </b>{{order.billingInfo.phone}}</p>
+      <p><b>Street: </b>{{order.billingInfo.street}}</p>
+      <p><b>City: </b>{{order.billingInfo.city}}</p>
+      <p><b>State: </b>{{order.billingInfo.city}}</p>
+      <p><b>Country: </b>{{order.billingInfo.country}}</p>
+      <p><b>Zip: </b>{{order.billingInfo.zip}}</p>
+      </div>
+    </div>
+  </main>
+  {{> footer}}
+</template>

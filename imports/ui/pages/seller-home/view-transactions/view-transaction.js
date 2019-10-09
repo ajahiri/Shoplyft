@@ -4,11 +4,17 @@ import { Orders } from '../../../../api/orders/orders.js';
 
 
 Template.sellerTransactions.onCreated(function() {
+  Meteor.subscribe('userData');
   Meteor.subscribe('branchOrders');
 });
 
 Template.sellerTransactions.helpers({
   orders() {
-    return Orders.find();
+    try {
+      var thisBranch = Meteor.user().allocatedBranch;
+      return Orders.find({branches: thisBranch});
+    } catch (e) {
+      return null;
+    }
   },
 });

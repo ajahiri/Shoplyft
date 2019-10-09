@@ -4,9 +4,16 @@ import { Products } from '../branches/branches.js';
 import { Orders } from './orders.js';
 
 Meteor.methods({
+  updateBilling(newBilling) {
+    if (Meteor.userId()) {
+      Meteor.users.update({_id: Meteor.userId()}, { $set: { billingInfo: newBilling} });
+    } else {
+      throw new Meteor.Error('Authorization Error.', 'Unauthorized action!');
+    }
+  },
   makePayment(billingInfo, creditCard) {
     //Get the users items that they want to purchase
-    var itemPurchase = Meteor.users.findOne({_id: Meteor.userId()}).cart;
+    var itemPurchase = Meteor.user().cart;
     if (itemPurchase.length === 0) {
       throw new Meteor.Error('BUSINESS-LOGIC', 'Cart is empty, nothing to process!');
     }
@@ -22,6 +29,8 @@ Meteor.methods({
     //Also use this to update stock of each product
     var cartTotal = 0;
     var supplierList = [];
+
+    //CART ITEM LOOP
     itemPurchase.forEach(function(element) {
       //Get product Price
       var price = Products.findOne({_id: element.prodId}).price;
@@ -67,9 +76,9 @@ Meteor.methods({
     Meteor.users.update({_id: Meteor.userId()}, { $set: {cart: []} });
     Email.send({
       from: "no-reply@shoplyft.me",
-      to: Meteor.users.findOne({_id: Meteor.userId}).emails[0].address,
+      to: Meteor.user().emails[0].address,
       subject: "Order: " + newOrder._id + " has successfully been processed.",
-      text: "Hi " + (Meteor.users.findOne({_id: Meteor.userId}).username) + ".\n\n Your order at Shoplyft.me has successfully been processed. \n\n Thank you for shopping at ShopLyft!",
+      text: "Hi " + (Meteor.user().username) + ".\n\n Your order at Shoplyft.me has successfully been processed. \n\n View your order details at: \n" + "https://shoplyft.me/orders/" + newOrder._id + "\n\n Thank you for shopping at ShopLyft!",
     });
   },
 });

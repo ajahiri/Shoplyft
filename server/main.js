@@ -21,7 +21,7 @@ Meteor.methods({
 Meteor.publish('userData', function () {
   if (this.userId) {
     return Meteor.users.find({ _id: this.userId }, {
-      fields: { allocatedBranch: 1, cart: 1}
+      fields: { allocatedBranch: 1, cart: 1, billingInfo: 1}
     });
   } else {
     this.ready();

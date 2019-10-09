@@ -17,3 +17,23 @@ main {
 .product_detail_image {
   max-width: 100%;
 }
+
+.card-fab {
+    position: relative;
+    z-index: 1;
+}
+
+.card-image {
+  max-height: 100px;
+  min-height: 100px;
+}
+
+.card-image img {
+  padding: 10px;
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
