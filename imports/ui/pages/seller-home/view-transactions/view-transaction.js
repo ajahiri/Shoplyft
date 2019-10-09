@@ -12,9 +12,16 @@ Template.sellerTransactions.helpers({
   orders() {
     try {
       var thisBranch = Meteor.user().allocatedBranch;
-      return Orders.find({branches: thisBranch});
+      return Orders.find({branches: thisBranch}, { sort: { createdAt: -1 } });
     } catch (e) {
       return null;
     }
+  },
+});
+
+Template.sellerTransactionEntry.helpers({
+  createdAtDate() {
+    var date = this.createdAt;
+    return moment(date).format("DD-MM-YYYY");
   },
 });

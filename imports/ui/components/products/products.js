@@ -71,7 +71,7 @@ Template.products.helpers({
       if (productSearch.get() != ""){
           return Products.find({
             promotional: true,
-            name: { $regex: productSearch.get() }
+            name: { $regex: productSearch.get(), $options: 'i' }
           });
       } else {
           return Products.find({promotional: true});

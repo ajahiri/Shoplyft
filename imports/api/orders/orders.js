@@ -3,7 +3,7 @@ export const Orders = new Mongo.Collection('order');
 Orders.schema = new SimpleSchema({
   _id: { type: String },
   owner: { type: String },    //UserID of the owner of this order
-  orderDate: { type: Date },
+  createdAt: { type: Date },
   itemList: { type: [Object] },   //This means the cart will be an array of objects, (product ID and qty & price of !!EACH!!!)
   "itemList.itemID": {
     type: String

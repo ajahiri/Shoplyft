@@ -64,7 +64,7 @@ Meteor.methods({
     var newOrder = {
       _id: Random.id(),
       owner: Meteor.userId(),
-      orderDate: new Date(),
+      createdAt: new Date(),
       itemList: archiveCartItems,
       totalPrice: cartTotal,
       payment: creditCard,
