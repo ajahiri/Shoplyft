@@ -37,8 +37,14 @@ import '../../ui/pages/checkout/checkout.js';
 //productDetail page
 import '../../ui/components/product_detailview/product_detailview.js';
 
+//orderDetail page
+import '../../ui/components/order_detailview/order_detailview.js';
+
 //PaymentSuccess page
 import '../../ui/pages/orderSuccess/orderSuccess.js';
+
+//Website Credits page
+import '../../ui/pages/websiteCredits/websiteCredits.js';
 
 Accounts.onEmailVerificationLink(function(token, done){
   try {
@@ -77,6 +83,13 @@ FlowRouter.route('/signup', {
   },
 });
 
+FlowRouter.route('/credits', {
+  name: 'App.credits',
+  action() {
+    BlazeLayout.render('App_body', { main: 'App_credits' });
+  },
+});
+
 //Respective routes for admin pages are in admin-home js
 FlowRouter.route('/admin-home', {
   name: 'App.admin-home',
@@ -103,28 +116,35 @@ FlowRouter.route('/MyAccount', {
 FlowRouter.route('/mycart', {
   name: 'App.mycart',
   action() {
-    BlazeLayout.render('mycart', { main: 'App_MyCart' });
+    BlazeLayout.render('App_body', { main: 'App_MyCart' });
   },
 });
 
 FlowRouter.route('/checkout', {
   name: 'App.checkout',
   action() {
-    BlazeLayout.render('checkout', { main: 'App_checkout' });
+    BlazeLayout.render('App_body', { main: 'App_Checkout' });
   },
 });
 
 FlowRouter.route('/products/:_id', {
   name: 'Product.detail',
   action(params, queryParams) {
-    BlazeLayout.render('product_detailview', { main: 'App_product' });
+    BlazeLayout.render('App_body', { main: 'product_detailview' });
+  }
+});
+
+FlowRouter.route('/orders/:_id', {
+  name: 'Order.detail',
+  action(params, queryParams) {
+    BlazeLayout.render('App_body', { main: 'order_detailview' });
   }
 });
 
 FlowRouter.route('/orderSuccess', {
   name: 'App.payment_success',
   action() {
-    BlazeLayout.render('orderSuccess', { main: 'App_MyAccount' });
+    BlazeLayout.render('App_body', { main: 'orderSuccess' });
   },
-  
+
 });

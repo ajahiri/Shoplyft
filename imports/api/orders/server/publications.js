@@ -19,11 +19,24 @@ Meteor.publish('userOrders', function() {
   }
 });
 
+Meteor.publish('specificOrder', function(id) {
+  if (!this.userId) {
+    return this.ready();
+  } else if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
+    return Orders.find({_id: id});
+  } else {
+    //Will find order where userID is owner
+    //Clever way  to make sure users that made that order can see that order
+    return Orders.find({owner: this.userId, _id: id});
+  }
+
+});
+
 Meteor.publish('branchOrders', function() {
   if (!this.userId) {
     return this.ready();
   } else if (Roles.userIsInRole(Meteor.userId(), 'seller')) {
-    var thisBranch = Meteor.users.findOne({_id: Meteor.userId()}).allocatedBranch;
+    var thisBranch = Meteor.user().allocatedBranch;
     return Orders.find({branches: thisBranch});
   } else {
     return this.ready();

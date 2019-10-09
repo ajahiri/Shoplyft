@@ -5,9 +5,6 @@ BrowserPolicy.content.allowInlineStyles();
 BrowserPolicy.content.allowFontDataUrl();
 
 var trusted = [
-  '*.google-analytics.com',
-  '*.mxpnl.com',
-  '*.zendesk.com',
   '*'
 ];
 

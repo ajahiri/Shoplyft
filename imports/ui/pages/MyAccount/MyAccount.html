@@ -115,7 +115,7 @@
 
 <template name="transactionEntry">
   <tr class="hoverable">
-      <td>{{_id}}</td>
+      <td><a href="orders/{{_id}}">{{_id}}</a></td>
       <td>{{billingInfo.fullName}}</td>
       <td>{{orderDate}}</td>
       <td>${{totalPrice}}</td>

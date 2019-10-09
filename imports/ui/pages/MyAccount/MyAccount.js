@@ -60,17 +60,18 @@ Template.App_MyAccount.helpers({
         }
     },
     orders() {
-      return Orders.find();
+      return Orders.find({owner: Meteor.userId()});
     },
     getBranch() {
       //Check if the user has an allocated Branch first.
       //This is important to avoid errors.
       //We can then access the branch attributes within the HTML code using Spacebars i.e. {{getBranch.name}}
-      if (Meteor.user().allocatedBranch) {
+      try {
         return Branches.findOne({_id: Meteor.user().allocatedBranch}).name;
-      } else {
+      } catch (e) {
         return null;
       }
+
     },
     //Checks if user has an allocatedBranch attribute.
     hasBranch() {

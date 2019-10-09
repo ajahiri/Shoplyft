@@ -7,7 +7,12 @@ Meteor.methods({
     if (Roles.userIsInRole(this.userId, 'seller')) {
       let branchID = Products.findOne({_id: itemID}).branch;
       if (Branches.findOne({_id:branchID}).seller === Meteor.userId()) {
-        Products.update({_id: itemID}, {$inc: {stock: amount}}  )
+        var productStock = Products.findOne({_id: itemID}).stock;
+        if ( (productStock + parseInt(amount)) < 0 ) {
+          throw new Meteor.Error('Logic error!','Negative stock result, please select appropriate amount.');
+        } else {
+          Products.update({_id: itemID}, {$inc: {stock: amount}}  );
+        }
       } else {
         throw new Meteor.Error('Authorization error.','Item does not belong to your branch!');
       }
