@@ -41,10 +41,25 @@ Template.App_MyAccount.events({
     } catch (e) {
       M.toast({html: e});
     }
+  },
+  'submit #modalSaveForm'(event, template) {
+    event.preventDefault();
+    const target = event.target;
+    const newEmail = target.newEmail.value;
+    try {
+      Accounts.removeEmail(Meteor.user()._id, Meteor.user().emails[0].address);
+      console.log("Stop Here");
+      Accounts.addEmail(Meteor.user()._id, newEmail);
+    } catch (e) {
+      M.toast({html: e});
+    }
   }
 });
 
 Template.App_MyAccount.helpers({
+    getUserId() {
+      return Meteor.user()._id;
+    },
     getUsername() {
         return Meteor.user().username;
     },
@@ -81,22 +96,32 @@ Template.App_MyAccount.helpers({
         return false;
       }
     },
-    //Checks if user has Billing Info
-    hasBillingInfo()
+    //Checks if user has Billing Info, and sends name if true
+    getBillingName()
     {
-      if(Meteor.user().billingInfo){
-        return true;
+      if(Meteor.user().billingInfo.fullName){
+        return Meteor.user().billingInfo.fullName;
       } else {
         return false;
       }
     },
-
-    getBillingName()
-    {
-      if(Meteor.user().billingInfo.fullName){
-        return billingInfo.fullName;
-      } else {
-        return false;
-      }
+    getBillingPhone() {
+      return Meteor.user().billingInfo.phone;
+    },
+    getBillingStreet() {
+      return Meteor.user().billingInfo.street;
+    },
+    getBillingCity() {
+      return Meteor.user().billingInfo.city;
+    },
+    getBillingState() {
+      return Meteor.user().billingInfo.state;
+    },
+    getBillingCountry() {
+      return Meteor.user().billingInfo.country;
+    },
+    getBillingZip() {
+      return Meteor.user().billingInfo.zip;
     }
 });
+
