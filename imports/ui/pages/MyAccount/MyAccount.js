@@ -72,10 +72,28 @@ Template.App_MyAccount.helpers({
         return null;
       }
     },
-    //Will check if user has an allocatedBranch attribute.
+    //Checks if user has an allocatedBranch attribute.
     hasBranch() {
       if (Meteor.user().allocatedBranch) {
         return true;
+      } else {
+        return false;
+      }
+    },
+    //Checks if user has Billing Info
+    hasBillingInfo()
+    {
+      if(Meteor.user().billingInfo){
+        return true;
+      } else {
+        return false;
+      }
+    },
+
+    getBillingName()
+    {
+      if(Meteor.user().billingInfo.fullName){
+        return billingInfo.fullName;
       } else {
         return false;
       }

@@ -49,11 +49,15 @@ Template.productBody.events({
     event.preventDefault();
     var qty = event.target.addQty.value;
     //console.log(template.data);
+    if(qty>=1){
     Meteor.call('shoppingCart.addCartItem', {
       prodId: template.data._id,
       qty: qty,
     });
     M.toast({html: 'Item added to cart'});
+    } else {
+      M.toast({html: 'Invalid Quantity'});
+    }
   },
   'click #deleteButton' (event, template) {
     event.preventDefault();

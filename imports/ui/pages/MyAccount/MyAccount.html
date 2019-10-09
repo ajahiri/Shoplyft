@@ -8,9 +8,9 @@
               <div class="card-panel grey lighten-4">
                   <a class="modal-trigger blue-text right" href="#updateModal">Update</a>
                   <i class="material-icons large blue-text">account_circle</i>
-                  <h4 class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4>
+                  <h4 id="username" class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4>
                   <div class=divider></div>
-                  <div class="section"><h4 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h4></div>
+                  <div id="email" class="section"><h5 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h5></div>
                   <div class=divider></div>
                   <div class="section">
                     <span class="blue-text">
@@ -61,6 +61,12 @@
                 <button type="submit" form="changePasswordForm" class="row col s12 blue waves-effect waves-light btn">Change Password</button>
               </form>
             </div>
+            <!-- Billing Details -->
+            {{#if hasBillingInfo}}
+            <div>
+              <h2>Billing Details</h2>
+              <h5>{{getBillingName}}</h5>
+            </div>
           </div>
         </div>
 
@@ -92,11 +98,6 @@
         <div id="updateModal" class="modal">
           <div class="modal-content">
             <h4>Update Details</h4>
-            <p class='blue-text'>New Username:</p>
-            <div class="input-field col s6">
-              <input id="newUsername" type="text" required class="validate">
-              <label for="newUsername">New Username</label>
-            </div>
             <p class='blue-text'>New Email:</p>
             <div class="input-field col s6">
               <input id="newEmail" type="text" required class="validate">
