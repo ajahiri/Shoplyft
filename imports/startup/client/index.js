@@ -1,7 +1,23 @@
 // Import client startup through a single index entry point
 import {materialize} from 'materialize-css';
+import './routes.js';
 
 Meteor.startup(function() {
+    Accounts.onEmailVerificationLink(function(token, done){
+      try {
+        Accounts.verifyEmail(token);
+        FlowRouter.go("App.MyAccount");
+        M.toast({html: "Successfully verified email!"});
+      } catch (e) {
+        M.toast({html: e.reason});
+      }
+    });
+
+    Accounts.onResetPasswordLink(function(token, done){
+      Session.set('resetPasswordToken', token);
+      BlazeLayout.render('App_body', { main: 'resetPassword' });
+    });
+
     reCAPTCHA.config({
         sitekey: '6LemTbsUAAAAANkkAlCBRQg_NjywnMPe0M4j_DSB', //REQUIRED
         theme: 'light', //OPTIONAL. <light|dark> Specifies the color theme of the widget
@@ -12,5 +28,3 @@ Meteor.startup(function() {
         "expired-callback": function() {} //OPTIONAL. The name of your callback function to be executed when the recaptcha response expires and the user needs to solve a new CAPTCHA.
     });
 });
-
-import './routes.js';

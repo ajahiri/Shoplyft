@@ -11,13 +11,14 @@
               <input id="item_name" type="text" class="validate">
               <label for="item_name">Product Name</label>
             </div>
-            <div class="input-field col s12 m12">
-              <input id="imageLink" type="url" class="validate">
-              <label for="imageLink">Image URL</label>
-            </div>
+            {{> uploadForm}}
             <div class="input-field col s12 m6">
               <input id="item_stock" type="number" class="validate">
               <label for="item_stock">Stock</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input id="item_category" type="text" class="validate">
+              <label for="item_category">Category</label>
             </div>
             <div class="input-field col s12 m6">
               <input id="item_price" type="text" class="validate">
@@ -46,4 +47,17 @@
     </div>
   </main>
   {{> footer}}
+</template>
+
+<template name="uploadForm">
+  <div class="input-field col s12 m12">
+    {{#with currentUpload}}
+      Uploading <b>{{file.name}}</b>:
+      <div class="progress">
+          <div class="determinate" style="width: {{progress.get}}%"></div>
+      </div>
+    {{else}}
+      <input id="fileInput" type="file" />
+    {{/with}}
+  </div>
 </template>

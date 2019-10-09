@@ -40,3 +40,4 @@ lmieulet:meteor-coverage@=1.1.4
 browser-policy
 appshore:recaptcha
 email
+ostrio:files
