@@ -11,7 +11,11 @@
               <input id="item_name" type="text" class="validate">
               <label for="item_name">Product Name</label>
             </div>
-            {{> uploadForm}}
+            {{#unless uploadStatus}}
+              {{> uploadForm}}
+            {{else}}
+              <p> Image uploaded successfully.</p>
+            {{/unless}}
             <div class="input-field col s12 m6">
               <input id="item_stock" type="number" class="validate">
               <label for="item_stock">Stock</label>
@@ -33,7 +37,7 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="item_description" class="materialize-textarea" data-length="280"></textarea>
+              <textarea id="item_description" class="materialize-textarea" data-length="1000"></textarea>
               <label for="item_description">Product Description</label>
             </div>
           </div>
@@ -42,11 +46,24 @@
               <i class="material-icons right">send</i>
             </button>
           </div>
+          {{#if uploadStatus}}
+            {{> previewImage}}
+          {{/if}}
+
         </form>
       </div>
     </div>
   </main>
   {{> footer}}
+</template>
+
+<template name="previewImage">
+  <div class="row">
+    <div class="col s12 center">
+      <b>Image Preview:</b>
+      <img id="imagePreview" class="materialboxed center" src="{{uploadPreview}}" alt="">
+    </div>
+  </div>
 </template>
 
 <template name="uploadForm">

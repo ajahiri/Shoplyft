@@ -3,6 +3,25 @@ import { Branches } from './branches.js';
 import { Products } from './branches.js';
 
 Meteor.methods({
+  'updateProductDetails'(itemID, updatedDetails) {
+    if (Roles.userIsInRole(this.userId, 'seller')) {
+      let branchID = Products.findOne({_id: itemID}).branch;
+      if (Branches.findOne({_id:branchID}).seller === Meteor.userId()) {
+        Products.update({_id: itemID}, { $set: {
+          promotional: updatedDetails.promotionalBool,
+          name: updatedDetails.productName,
+          description: updatedDetails.description,
+          price: updatedDetails.price,
+          category: updatedDetails.category,
+          stock: parseInt(updatedDetails.stock),
+        } })
+      } else {
+        throw new Meteor.Error('Authorization error.','Item does not belong to your branch!');
+      }
+    } else {
+      throw new Meteor.Error('Authorization error.','Not authorised!');
+    }
+  },
   'addStock'(itemID, amount) {
     if (Roles.userIsInRole(this.userId, 'seller')) {
       let branchID = Products.findOne({_id: itemID}).branch;
