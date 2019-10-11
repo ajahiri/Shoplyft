@@ -41,6 +41,30 @@ Template.billing_Info.events({
     event.preventDefault();
     const target = event.target;
 
+    var cardValid=true;
+    function isCardValid() {
+      if (!(isNaN (target.cname.value))) {
+        cardValid=false;
+      }
+      if ((isNaN (target.ccnum.value))) {
+        cardValid=false;
+      }
+      if (isNaN (target.expmonth.value) || target.expmonth.value>12 || target.expmonth.value<1) {
+        cardValid=false;
+      }
+      if (isNaN (target.expyear.value) || target.expyear.value<2019 || target.expyear.value>2050) {
+        cardValid=false;
+      }
+      if (isNaN (target.cvv.value) || target.cvv.value<0) {
+        cardValid=false;
+      }
+      return cardValid;
+    }
+
+   if(!(isCardValid())){
+     M.toast({html: 'Invalid Card Details'});
+     return; // This return exits the event as no pint in going ahead without valid card details
+   }
     var billingInfo = {
       fullName: target.fname.value,
       phone: target.phone.value,
@@ -94,4 +118,5 @@ Template.billing_Info.events({
       });
     }
   }
+
 });
