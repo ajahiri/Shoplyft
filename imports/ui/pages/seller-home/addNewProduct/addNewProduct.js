@@ -68,6 +68,7 @@ Template.addNewProduct.events({
       Meteor.call('addNewProduct.addProduct', {
         name: productName,
         imageLink: Images.findOne({_id: imageID}).link(),
+        imageID: imageID,
         stock: stock,
         price: price,
         category: category,
