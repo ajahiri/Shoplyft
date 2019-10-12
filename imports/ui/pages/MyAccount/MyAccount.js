@@ -3,14 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Branches } from '../../../api/branches/branches.js';
 import { Orders } from '../../../api/orders/orders.js';
 
-Meteor.methods({
-  'replaceEmail'(email) {  
-    Accounts.addEmail(this.userId, email);
-    Accounts.sendVerificationEmail(this.userId, email);
-    Accounts.removeEmail(this.user()._id, Meteor.user().emails[0].address)
-  }
-});
-
 Template.App_MyAccount.onRendered(function(){
   var elems = document.querySelectorAll('.modal');
   var instances = M.Modal.init(elems);
@@ -51,8 +43,16 @@ Template.App_MyAccount.events({
     }
   },
   'submit #modalSaveForm': function(event) {
+    event.preventDefault();
     var newEmail = event.target.newEmail.value;
-    Meteor.call('replaceEmail', newEmail);
+    Meteor.call('replaceEmail', newEmail, function(error) {
+      if (error) {
+        M.toast({html: error});
+      } else {
+        event.target.reset();
+        M.toast({html: "Successfully changed email!"});
+      }
+    });
   }
 });
 
@@ -64,10 +64,18 @@ Template.App_MyAccount.helpers({
         return Meteor.user().username;
     },
     getEmail() {
+      try {
         return Meteor.user().emails[0].address;
+      } catch (e) {
+        return null;
+      }
     },
     verified() {
+      try {
         return Meteor.user().emails[0].verified;
+      } catch (e) {
+        return false;
+      }
     },
     getRoles() {
         if (Meteor.user().roles) {
@@ -124,4 +132,3 @@ Template.App_MyAccount.helpers({
       return Meteor.user().billingInfo.zip;
     }
 });
-

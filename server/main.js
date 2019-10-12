@@ -15,6 +15,16 @@ Meteor.methods({
       throw new Meteor.Error('email error', 'Failed to send verification email!');
     }
   },
+  replaceEmail(email) {
+    try {
+      Accounts.addEmail(Meteor.userId(), email);
+      //Accounts.sendVerificationEmail(Meteor.userId(), email); //This is causing an issue at the moment will fix later.
+      //Users can still just click the send verification link to send a verification email
+      Accounts.removeEmail(Meteor.userId(), Meteor.user().emails[0].address);
+    } catch (e) {
+      throw new Meteor.Error('Email update error.', e.reason);
+    }
+  }
 });
 
 //Following Publish needed to have allocatedBranch attribute given to clients.
