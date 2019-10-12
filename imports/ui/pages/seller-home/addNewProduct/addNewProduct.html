@@ -21,8 +21,20 @@
               <label for="item_stock">Stock</label>
             </div>
             <div class="input-field col s12 m6">
-              <input id="item_category" type="text" class="validate">
-              <label for="item_category">Category</label>
+              <select id="categorySelector">
+                <option value="" disabled selected>Choose category</option>
+                <option value="Peripherals">Peripherals</option>
+                <option value="Power Supplies">Power Supplies</option>
+                <option value="Processors">Processors</option>
+                <option value="Memory">Memory</option>
+                <option value="Graphic Cards">Graphic Cards</option>
+                <option value="Motherboards">Motherboards</option>
+                <option value="Speakers">Speakers</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Desktops">Desktops</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+              </select>
+              <label>Category</label>
             </div>
             <div class="input-field col s12 m6">
               <input id="item_price" type="text" class="validate">

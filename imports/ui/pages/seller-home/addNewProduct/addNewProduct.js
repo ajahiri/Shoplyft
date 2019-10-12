@@ -32,6 +32,8 @@ Template.uploadForm.onCreated(function() {
 
 Template.addNewProduct.onRendered(function() {
   $('input#input_text, textarea#item_description').characterCounter();
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems);
 });
 
 Template.addNewProduct.helpers({
@@ -50,7 +52,7 @@ Template.addNewProduct.events({
     const productName = target.item_name.value;
     const stock = target.item_stock.value;
     const price = target.item_price.value;
-    const category = target.item_category.value;
+    const category = target.categorySelector.value;
     const description = target.item_description.value;
     const promotionalBool = $('#promoCheck').is(':checked');
 
