@@ -3,6 +3,14 @@ import { Meteor } from 'meteor/meteor';
 import { Branches } from '../../../api/branches/branches.js';
 import { Orders } from '../../../api/orders/orders.js';
 
+Meteor.methods({
+  'replaceEmail'(email) {  
+    Accounts.addEmail(this.userId, email);
+    Accounts.sendVerificationEmail(this.userId, email);
+    Accounts.removeEmail(this.user()._id, Meteor.user().emails[0].address)
+  }
+});
+
 Template.App_MyAccount.onRendered(function(){
   var elems = document.querySelectorAll('.modal');
   var instances = M.Modal.init(elems);
@@ -42,17 +50,9 @@ Template.App_MyAccount.events({
       M.toast({html: e});
     }
   },
-  'submit #modalSaveForm'(event, template) {
-    event.preventDefault();
-    const target = event.target;
-    const newEmail = target.newEmail.value;
-    try {
-      Accounts.removeEmail(Meteor.user()._id, Meteor.user().emails[0].address);
-      console.log("Stop Here");
-      Accounts.addEmail(Meteor.user()._id, newEmail);
-    } catch (e) {
-      M.toast({html: e});
-    }
+  'submit #modalSaveForm': function(event) {
+    var newEmail = event.target.newEmail.value;
+    Meteor.call('replaceEmail', newEmail);
   }
 });
 
