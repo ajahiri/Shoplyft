@@ -46,7 +46,7 @@ Template.billing_Info.events({
       if (!(isNaN (target.cname.value))) {
         cardValid=false;
       }
-      if ((isNaN (target.ccnum.value))) {
+      if ((isNaN (target.ccnum.value)) || target.ccnum.value.length > 19 || target.ccnum.value.length < 12) {
         cardValid=false;
       }
       if (isNaN (target.expmonth.value) || target.expmonth.value>12 || target.expmonth.value<1) {
@@ -91,32 +91,19 @@ Template.billing_Info.events({
         if (error) {
           isLoading.set(false)
           M.toast({html: error.reason});
-        } else {
-          //Not good idea to have 2 blocks of identical code here but trying to avoid bugs w/e
-          Meteor.call('makePayment', billingInfo, creditCard, (error, result) => {
-            if (error) {
-              isLoading.set(false)
-              M.toast({html: error.reason});
-            } else {
-              isLoading.set(false);
-              M.toast({html: 'Order successful!'});
-              FlowRouter.go('App.payment_success');
-            }
-          });
         }
       });
-    } else {
-      Meteor.call('makePayment', billingInfo, creditCard, (error, result) => {
-        if (error) {
-          isLoading.set(false)
-          M.toast({html: error.reason});
-        } else {
-          isLoading.set(false);
-          M.toast({html: 'Order successful!'});
-          FlowRouter.go('App.payment_success');
-        }
-      });
-    }
+    } 
+    Meteor.call('makePayment', billingInfo, creditCard, (error, result) => {
+      if (error) {
+        isLoading.set(false)
+        M.toast({html: error.reason});
+      } else {
+        isLoading.set(false);
+        M.toast({html: 'Order successful!'});
+        FlowRouter.go('App.payment_success');
+      }
+    });
   }
 
 });

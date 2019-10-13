@@ -72,13 +72,17 @@ Meteor.methods({
       branches: supplierList,
     }
 
-    Orders.insert(newOrder);
-    Meteor.users.update({_id: Meteor.userId()}, { $set: {cart: []} });
-    Email.send({
-      from: "no-reply@shoplyft.me",
-      to: Meteor.user().emails[0].address,
-      subject: "Order: " + newOrder._id + " has successfully been processed.",
-      text: "Hi " + (Meteor.user().username) + ".\n\n Your order at Shoplyft.me has successfully been processed. \n\n View your order details at: \n" + "https://shoplyft.me/orders/" + newOrder._id + "\n\n Thank you for shopping at ShopLyft!",
-    });
+    try {
+      Orders.insert(newOrder);
+      Meteor.users.update({_id: Meteor.userId()}, { $set: {cart: []} });
+      Email.send({
+        from: "no-reply@shoplyft.me",
+        to: Meteor.user().emails[0].address,
+        subject: "Order: " + newOrder._id + " has successfully been processed.",
+        text: "Hi " + (Meteor.user().username) + ".\n\n Your order at Shoplyft.me has successfully been processed. \n\n View your order details at: \n" + "https://shoplyft.me/orders/" + newOrder._id + "\n\n Thank you for shopping at ShopLyft!",
+      });
+    } catch (e) {
+      throw new Meteor.Error('Internal server error.', 'Error: ' + e);
+    }
   },
 });

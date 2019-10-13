@@ -71,4 +71,27 @@ Template.productBody.events({
       }
     });
   },
+  'submit #updateProductForm' (event, template) {
+    //Prevent default browser form submission
+    event.preventDefault();
+    var itemID = template.data._id;
+    //Get data from DOM
+    const target = event.target;
+    var updatedDetails = {
+      productName: target.item_name.value,
+      stock: target.item_stock.value,
+      price: target.item_price.value,
+      category: target.item_category.value,
+      description: target.item_description.value,
+      promotionalBool: $('#promoCheck').is(':checked'),
+    };
+
+    Meteor.call('updateProductDetails', itemID, updatedDetails, (error, result) => {
+      if (error) {
+        M.toast({html: error.reason});
+      } else {
+        M.toast({html: 'Successfully updated product details!'});
+      }
+    });
+  }
 })

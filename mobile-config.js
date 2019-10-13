@@ -6,8 +6,8 @@ App.info({
   author: 'Annulus Studios',
   email: 'annulus.studios@gmail.com',
   website: 'https://shoplyft.me/',
-  version: '0.2.4',
-  buildNumber: '32'
+  version: '0.2.6',
+  buildNumber: '34'
 });
 
 App.setPreference('android-targetSdkVersion', '28');

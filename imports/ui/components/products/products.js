@@ -76,6 +76,14 @@ Template.products.helpers({
       } else {
           return Products.find({promotional: true});
       }
+    } else if (viewingBranch.get() == 'all') {
+      if (productSearch.get() != ""){
+          return Products.find({
+            name: { $regex: productSearch.get(), $options: 'i' }
+          });
+      } else {
+          return Products.find();
+      }
     }
     else if (productSearch.get() != "") {
       //return FoundProducts.findOne({}).productsFound;

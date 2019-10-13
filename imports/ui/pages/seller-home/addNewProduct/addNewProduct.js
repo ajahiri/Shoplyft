@@ -5,6 +5,26 @@ import { FilesCollection } from 'meteor/ostrio:files';
 import { Images } from '../../../../api/imageStore/imageStore.js';
 
 var imageID;
+var uploadStatus = new ReactiveVar(false);
+
+Template.previewImage.onRendered(function() {
+  var elems = document.querySelectorAll('.materialboxed');
+  var instances = M.Materialbox.init(elems);
+});
+
+Template.previewImage.helpers({
+  uploadPreview() {
+    if (imageID && uploadStatus.get()) {
+      try {
+        return Images.findOne({_id: imageID}).link();
+      } catch (e) {
+        return;
+      }
+    } else {
+      return;
+    }
+  }
+});
 
 Template.uploadForm.onCreated(function() {
   Meteor.subscribe('files.images.all');
@@ -12,6 +32,14 @@ Template.uploadForm.onCreated(function() {
 
 Template.addNewProduct.onRendered(function() {
   $('input#input_text, textarea#item_description').characterCounter();
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems);
+});
+
+Template.addNewProduct.helpers({
+  uploadStatus() {
+    return uploadStatus.get();
+  },
 });
 
 Template.addNewProduct.events({
@@ -24,7 +52,7 @@ Template.addNewProduct.events({
     const productName = target.item_name.value;
     const stock = target.item_stock.value;
     const price = target.item_price.value;
-    const category = target.item_category.value;
+    const category = target.categorySelector.value;
     const description = target.item_description.value;
     const promotionalBool = $('#promoCheck').is(':checked');
 
@@ -33,11 +61,14 @@ Template.addNewProduct.events({
       throw new Meteor.Error('No image.', 'Error: No image has been uplaoded for this product.');
     } else if (stock <= 0) {
       throw new Meteor.Error('Logic error.', 'Error: Invalid stock amount.');
+    } else if (description.length > 1000) {
+      throw new Meteor.Error('Logic error.', 'Error: Description is too long.');
     } else {
       //Call method to add new product
       Meteor.call('addNewProduct.addProduct', {
         name: productName,
         imageLink: Images.findOne({_id: imageID}).link(),
+        imageID: imageID,
         stock: stock,
         price: price,
         category: category,
@@ -50,6 +81,8 @@ Template.addNewProduct.events({
           //success
           target.reset();
           M.toast({html: 'Added product ' + productName + '.'});
+          uploadStatus.set(false);
+          imageID = null;
         }
       });
     }
@@ -88,6 +121,7 @@ Template.uploadForm.events({
           M.toast({html:'File "' + fileObj.name + '" successfully uploaded'});
           //console.log(fileObj);
           imageID = fileObj._id;
+          uploadStatus.set(true);
         }
         template.currentUpload.set(false);
       });

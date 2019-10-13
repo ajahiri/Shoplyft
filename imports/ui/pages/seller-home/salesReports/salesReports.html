@@ -1,0 +1,63 @@
+<template name="salesReports">
+  {{> navigation}}
+  <main>
+    <div class="container">
+      <h3>Sales Report: </h3>
+      <h5>Showing sales report for last {{saleTime}} days.</h5>
+      <h5>Branch: {{thisBranch.name}}.</h5>
+      <h5>Sales Stats: </h5>
+      <p>Gross Income: ${{salesStatistics.grossIncome}} AUD</p>
+      <p>Total Products Sold: {{salesStatistics.itemCount}}</p>
+      <p>Total Orders Made: {{salesStatistics.orderCount}}</p>
+      <b>Date of Report: {{currDate}}</b>
+      <h5>Products Sold: </h5>
+      <table class="highlight responsive-table">
+        <thead>
+          <tr>
+              <th>Product ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity Sold</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each salesStatistics.itemList}}
+            {{>productEntry}}
+          {{/each}}
+        </tbody>
+      </table>
+      <h5>Orders Made:</h5>
+      <table class="resposive-table grey lighten-4">
+          <thead>
+          <tr>
+              <th class="blue-text">Order ID</th>
+              <th class="blue-text">Billing Name</th>
+              <th class="blue-text">Order Date</th>
+              <th class="blue-text">Order Total</th>
+          </tr>
+          </thead>
+          <tbody>
+            {{#each orders}}
+              {{>sellerTransactionEntry}}
+            {{/each}}
+          </tbody>
+      </table>
+    </div>
+    <div class="fixed-action-btn">
+      <a id="saveReport" class="btn-floating waves-effect waves-light btn-large blue">
+        <i class="large material-icons">print</i>
+      </a>
+    </div>
+  </main>
+  {{> footer}}
+</template>
+
+<template name="productEntry">
+  <tr>
+    <td><a href="/products/{{itemID}}">{{itemID}}</a></td>
+    <td>{{name}}</td>
+    <td>${{price}} AUD</td>
+    <td class="">{{quantity}}</td>
+  </tr>
+</template>

@@ -1,8 +1,28 @@
 import { Random } from 'meteor/random';
 import { Branches } from './branches.js';
 import { Products } from './branches.js';
+import { Images } from '../imageStore/imageStore.js';
 
 Meteor.methods({
+  'updateProductDetails'(itemID, updatedDetails) {
+    if (Roles.userIsInRole(this.userId, 'seller')) {
+      let branchID = Products.findOne({_id: itemID}).branch;
+      if (Branches.findOne({_id:branchID}).seller === Meteor.userId()) {
+        Products.update({_id: itemID}, { $set: {
+          promotional: updatedDetails.promotionalBool,
+          name: updatedDetails.productName,
+          description: updatedDetails.description,
+          price: updatedDetails.price,
+          category: updatedDetails.category,
+          stock: parseInt(updatedDetails.stock),
+        } })
+      } else {
+        throw new Meteor.Error('Authorization error.','Item does not belong to your branch!');
+      }
+    } else {
+      throw new Meteor.Error('Authorization error.','Not authorised!');
+    }
+  },
   'addStock'(itemID, amount) {
     if (Roles.userIsInRole(this.userId, 'seller')) {
       let branchID = Products.findOne({_id: itemID}).branch;
@@ -22,7 +42,9 @@ Meteor.methods({
   },
   'deleteProduct'(itemID) {
     if (Roles.userIsInRole(this.userId, 'admin')) {
-      Products.remove({_id: itemID}, {justOne: true});
+      var imageID = Products.findOne({_id: itemID}).imageID;
+      Products.remove({_id: itemID});
+      Images.remove({_id: imageID});
     } else {
       throw new Meteor.Error('Authorization error.','Not authorised!');
     }
@@ -71,6 +93,7 @@ Meteor.methods({
   'addNewProduct.addProduct'({
     name,
     imageLink,
+    imageID,
     stock,
     price,
     category,
@@ -91,6 +114,7 @@ Meteor.methods({
         price: price,
         category: category,
         imageURL: imageLink,
+        imageID: imageID,
         stock: parseInt(stock),
         createdAt: new Date()
       }
@@ -103,6 +127,7 @@ Meteor.methods({
         price: { type: String },
         category: { type: String },
         imageURL: { type: String },
+        imageID: { type: String },
         stock: { type: Number },
         createdAt: { type: Date },
       }).validate(newProduct);

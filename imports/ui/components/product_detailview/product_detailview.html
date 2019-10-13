@@ -18,7 +18,7 @@
           <h5>Price: ${{price}} AUD</h5>
           <p>Stock: {{stock}} units
             {{#if isInRole 'seller'}}
-              <a class="modal-trigger blue-text right" href="#addStockModal">Add stock?</a>
+              <a class="modal-trigger blue-text right" href="#addStockModal">Update product?</a>
             {{/if}}
           </p>
           <p>Branch: {{branchName}}</p>
@@ -62,6 +62,7 @@
   <div id="addStockModal" class="modal">
     <div class="modal-content">
       <h4>Product Properties</h4>
+      <h5>Add Stock:</h5>
       <p>Add -1 to deduct stock.</p>
       <div class="row">
         {{#if isInRole 'seller'}}
@@ -73,6 +74,50 @@
             <button type="submit" form="addStockForm" class="row col s12 blue waves-effect waves-light btn">Add Stock</button>
           </form>
         {{/if}}
+      </div>
+      <div class="row">
+        <h5>Update details:</h5>
+        <form id="updateProductForm" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input value="{{this.name}}" id="item_name" type="text" class="validate">
+              <label class="active" for="item_name">Product Name</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input value="{{this.stock}}" id="item_stock" type="number" class="validate">
+              <label class="active" for="item_stock">Stock</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input value="{{this.category}}" id="item_category" type="text" class="validate">
+              <label class="active" for="item_category">Category</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <input value="{{this.price}}" id="item_price" type="text" class="validate">
+              <label class="active" for="item_price">Price</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <label>
+                {{#if this.promotional}}
+                  <input checked type="checkbox" id="promoCheck" class="filled-in" />
+                {{else}}
+                  <input type="checkbox" id="promoCheck" class="filled-in" />
+                {{/if}}
+                <span>Promotional product list?</span>
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea value="{{this.description}}" id="item_description" class="materialize-textarea" data-length="1000"></textarea>
+              <label class="active" for="item_description">Product Description</label>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Update Product
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="modal-footer">

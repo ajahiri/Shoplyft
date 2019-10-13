@@ -3,6 +3,8 @@ import './seller-home.html';
 import './view-transactions/view-transaction.js';
 //Add New products
 import './addNewProduct/addNewProduct.js';
+//Sales salesReports
+import './salesReports/salesReports.js';
 
 FlowRouter.route('/seller-home/add-new-product', {
   name: 'App.seller-home.add-new-product',
@@ -16,4 +18,11 @@ FlowRouter.route('/seller-home/view-transactions', {
   action() {
     BlazeLayout.render('App_body', { main: 'sellerTransactions' });
   },
+});
+
+FlowRouter.route('/seller/sales-report/:saleTime', {
+  name: 'Sales.report',
+  action(params, queryParams) {
+    BlazeLayout.render('App_body', { main: 'salesReports' });
+  }
 });

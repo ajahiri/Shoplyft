@@ -4,7 +4,7 @@ import { FilesCollection } from 'meteor/ostrio:files';
 //FilesCollection Constructor
 export const Images = new FilesCollection({
   collectionName: 'productImages',
-  storagePath: '~/webProductImages',
+  storagePath: '/webProductImages',
   allowClientCode: false, // Disallow remove files from Client
   onBeforeUpload(file) {
     // Allow upload files under 10MB, and only in png/jpg/jpeg formats

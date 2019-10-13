@@ -9,9 +9,6 @@ Roles.addUsersToRoles('up5fytyofupf2nwEL', 'admin');
 Meteor.startup(function() {
   Accounts.config({sendVerificationEmail: true});
   process.env.MAIL_URL = 'smtp://annulusstudios:1RVhswN31ctXI8fXDvat@smtp.sendgrid.net:587';
-  reCAPTCHA.config({
-      privatekey: '6LemTbsUAAAAAOzHQK54SuwyoxFrSuSk16k_-_VU'
-  });
 
   Accounts.emailTemplates.siteName = 'Shoplyft';
   Accounts.emailTemplates.from = 'ShopLyft <no-reply@shoplyft.me>';
