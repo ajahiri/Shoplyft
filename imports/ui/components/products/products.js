@@ -52,11 +52,13 @@ Template.productItem.events({
   'click #addtoCartButton' (event, template) {
     event.preventDefault();
     //console.log(template.data);
-    Meteor.call('shoppingCart.addCartItem', {
-      prodId: template.data._id,
-      qty: 1,
+    Meteor.call('shoppingCart.addCartItem', template.data._id, 1, (error, result) => {
+      if (error) {
+        M.toast({html: error.reason});
+      } else {
+        M.toast({html: 'Item added to cart'});
+      }
     });
-    M.toast({html: 'Item added to cart'});
   }
 });
 

@@ -36,12 +36,11 @@ function calculateStatistics(orders) {
 
         if(foundIndex == -1) {
           calcResults.itemList.push(itemElement);
-          calcResults.itemCount += itemElement.quantity;
+          calcResults.itemCount += parseInt(itemElement.quantity);
         } else {
-          calcResults.itemList[foundIndex].quantity += itemElement.quantity;
-          calcResults.itemCount += itemElement.quantity;
+          calcResults.itemList[foundIndex].quantity += parseInt(itemElement.quantity);
+          calcResults.itemCount += parseInt(itemElement.quantity);
         }
-
       }
     });
 

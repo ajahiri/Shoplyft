@@ -46,7 +46,7 @@
 
             <!--Change Password-->
             <div class="col s12 m6">
-              <h3 class="center">Change Password</h3>
+              <h4 class="center">Change Password</h4>
               <form id="changePasswordForm" class="col s12">
                 <div class="row">
                   <div class="input-field col s6">
@@ -60,22 +60,23 @@
                 </div>
                 <button type="submit" form="changePasswordForm" class="row col s12 blue waves-effect waves-light btn">Change Password</button>
               </form>
+              <!-- Billing Details -->
+              {{#if billingInfo}}
+                <div>
+                  <div class="section"></div>
+                  <h4>Billing Details</h4>
+                  <div class="divider"></div>
+                  <h5 class='blue-text'>Name: <span class='black-text'>{{billingInfo.fullName}}</span></h5>
+                  <h5 class='blue-text'>Phone: <span class='black-text'>{{billingInfo.phone}}</span></h5>
+                  <h5 class='blue-text'>Street: <span class='black-text'>{{billingInfo.street}}</span></h5>
+                  <h5 class='blue-text'>City: <span class='black-text'>{{billingInfo.city}}</span></h5>
+                  <h5 class='blue-text'>State: <span class='black-text'>{{billingInfo.state}}</span></h5>
+                  <h5 class='blue-text'>Country: <span class='black-text'>{{billingInfo.country}}</span></h5>
+                  <h5 class='blue-text'>Zip: <span class='black-text'>{{billingInfo.zip}}</span></h5>
+                </div>
+              {{/if}}
             </div>
-            <!-- Billing Details -->
-            {{#if getBillingName}}
-              <div>
-                <div class="section"></div>
-                <h3>Billing Details</h3>
-                <div class="divider"></div>
-                <h4 class='blue-text'>Name: <span class='black-text'>{{getBillingName}}</span></h4>
-                <h4 class='blue-text'>Phone: <span class='black-text'>{{getBillingPhone}}</span></h4>
-                <h4 class='blue-text'>Street: <span class='black-text'>{{getBillingStreet}}</span></h4>
-                <h4 class='blue-text'>City: <span class='black-text'>{{getBillingCity}}</span></h4>
-                <h4 class='blue-text'>State: <span class='black-text'>{{getBillingState}}</span></h4>
-                <h4 class='blue-text'>Country: <span class='black-text'>{{getBillingCountry}}</span></h4>
-                <h4 class='blue-text'>Zip: <span class='black-text'>{{getBillingZip}}</span></h4>
-              </div>
-            {{/if}}
+
           </div>
         </div>
 
@@ -106,12 +107,12 @@
         <!-- Modal Structure start-->
         <div id="updateModal" class="modal">
           <div class="modal-content">
+            <h4>Update Email</h4>
             <form id='modalSaveForm'>
-              <h4>Update Email</h4>
-              <div class="input-field col s6">
-                <input name="newEmail" type="text" required class="validate">
+              <div class="input-field">
+                <input name="newEmail" type="text" required class="validate s12">
                 <label for="newEmail">New Email</label>
-                <input type='submit' value='Save' class="blue waves-effect waves-light btn">
+                <button type='submit' class="blue waves-effect waves-light btn">Save</button>
               </div>
             </form>
           </div>

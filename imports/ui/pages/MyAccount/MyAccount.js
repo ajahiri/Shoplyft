@@ -56,8 +56,7 @@ Template.App_MyAccount.events({
         } else {
           event.target.reset();
           M.toast({html: "Successfully changed email!"});
-          instance.close();
-
+          $('.modal').modal('close');
         }
       });
     }
@@ -113,32 +112,14 @@ Template.App_MyAccount.helpers({
       }
     },
     //Checks if user has Billing Info, and sends name if true
-    getBillingName()
+    billingInfo()
     {
-      if(Meteor.user().billingInfo.fullName){
-        return Meteor.user().billingInfo.fullName;
+      if(Meteor.user()){
+        return Meteor.user().billingInfo;
       } else {
         return false;
       }
     },
-    getBillingPhone() {
-      return Meteor.user().billingInfo.phone;
-    },
-    getBillingStreet() {
-      return Meteor.user().billingInfo.street;
-    },
-    getBillingCity() {
-      return Meteor.user().billingInfo.city;
-    },
-    getBillingState() {
-      return Meteor.user().billingInfo.state;
-    },
-    getBillingCountry() {
-      return Meteor.user().billingInfo.country;
-    },
-    getBillingZip() {
-      return Meteor.user().billingInfo.zip;
-    }
 });
 
 Template.transactionEntry.helpers({

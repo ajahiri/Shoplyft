@@ -47,17 +47,17 @@ Template.productBody.events({
   },
   'submit #addToCart' (event, template) {
     event.preventDefault();
-    var qty = event.target.addQty.value;
+    var qty = parseInt(event.target.addQty.value);
+    var itemID = template.data._id;
     //console.log(template.data);
-    if(qty>=1){
-    Meteor.call('shoppingCart.addCartItem', {
-      prodId: template.data._id,
-      qty: qty,
+    Meteor.call('shoppingCart.addCartItem', itemID, qty, (error, result) => {
+      if (error) {
+        M.toast({html: error});
+      } else {
+        event.target.reset();
+        M.toast({html: 'Item added to cart'});
+      }
     });
-    M.toast({html: 'Item added to cart'});
-    } else {
-      M.toast({html: 'Invalid Quantity'});
-    }
   },
   'click #deleteButton' (event, template) {
     event.preventDefault();
