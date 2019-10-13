@@ -45,14 +45,22 @@ Template.App_MyAccount.events({
   'submit #modalSaveForm': function(event) {
     event.preventDefault();
     var newEmail = event.target.newEmail.value;
-    Meteor.call('replaceEmail', newEmail, function(error) {
-      if (error) {
-        M.toast({html: error});
-      } else {
-        event.target.reset();
-        M.toast({html: "Successfully changed email!"});
-      }
-    });
+    if (newEmail == Meteor.user().emails[0].address)
+    {
+      M.toast({html: "Email is already assigned."})
+      event.target.reset();
+    } else {
+      Meteor.call('replaceEmail', newEmail, function(error) {
+        if (error) {
+          M.toast({html: error});
+        } else {
+          event.target.reset();
+          M.toast({html: "Successfully changed email!"});
+          instance.close();
+
+        }
+      });
+    }
   }
 });
 
