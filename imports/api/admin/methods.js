@@ -2,7 +2,7 @@
 import { Random } from 'meteor/random';
 
 // Needed for first admin
-Roles.addUsersToRoles('PStyKhCHoxXRK6trC', ['admin']);
+Roles.addUsersToRoles('aLTrmJsw9cxNLnsW5', ['admin']);
 
 Meteor.methods({
   'userTableEntry.promoteUser'({userId}) {
