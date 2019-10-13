@@ -33,7 +33,12 @@ Template.dropdown.events({
     const target = event.target;
     viewingBranch.set(target.value);
   }
-})
+});
+
+Template.productItem.onRendered(function() {
+  var elems = document.querySelectorAll('.tooltipped');
+  var instances = M.Tooltip.init(elems);
+});
 
 Template.productItem.helpers({
   outofStock() {
@@ -60,18 +65,13 @@ Template.products.onCreated(function() {
   Meteor.subscribe('userCart');
 });
 
-Template.productItem.onRendered(function() {
-  var elems = document.querySelectorAll('.tooltipped');
-  var instances = M.Tooltip.init(elems);
-});
-
 Template.products.helpers({
   products() {
     if (viewingBranch.get() == 'promotional') {
       if (productSearch.get() != ""){
           return Products.find({
             promotional: true,
-            name: { $regex: productSearch.get() }
+            name: { $regex: productSearch.get(), $options: 'i' }
           });
       } else {
           return Products.find({promotional: true});

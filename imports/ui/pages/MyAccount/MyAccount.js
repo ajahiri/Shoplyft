@@ -91,7 +91,7 @@ Template.App_MyAccount.helpers({
         }
     },
     orders() {
-      return Orders.find({owner: Meteor.userId()});
+      return Orders.find({owner: Meteor.userId()}, { sort: { createdAt: -1 } });
     },
     getBranch() {
       //Check if the user has an allocated Branch first.
@@ -139,4 +139,11 @@ Template.App_MyAccount.helpers({
     getBillingZip() {
       return Meteor.user().billingInfo.zip;
     }
+});
+
+Template.transactionEntry.helpers({
+  createdAtDate() {
+    var date = this.createdAt;
+    return moment(date).format("DD-MM-YYYY");
+  },
 });

@@ -22,6 +22,9 @@ Branches.schema = new SimpleSchema({
   "address.city": {
     type: String
   },
+  "address.state": {
+    type: String
+  },
   "address.postCode": {
     type: Number              //Australian postal codes are always numbers
   },
@@ -36,6 +39,7 @@ Products.schema = new SimpleSchema({
   name: { type: String },
   description: { type: String },
   price: { type: String },
+  category: { type: String },
   imageURL: { type: String },
   stock: { type: Number },
   createdAt: { type: Date },

@@ -15,3 +15,7 @@ import '../../api/shoppingCart/methods.js';
 //Orders API
 import '../../api/orders/server/publications.js';
 import '../../api/orders/methods.js';
+
+//ImageStore API
+import '../../api/imageStore/server/publications.js';
+import '../../api/imageStore/imageStore.js';

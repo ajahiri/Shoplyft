@@ -46,21 +46,6 @@ import '../../ui/pages/orderSuccess/orderSuccess.js';
 //Website Credits page
 import '../../ui/pages/websiteCredits/websiteCredits.js';
 
-Accounts.onEmailVerificationLink(function(token, done){
-  try {
-    Accounts.verifyEmail(token);
-    FlowRouter.go("App.MyAccount");
-    M.toast({html: "Successfully verified email!"});
-  } catch (e) {
-    M.toast({html: e.reason});
-  }
-});
-
-Accounts.onResetPasswordLink(function(token, done){
-  Session.set('resetPasswordToken', token);
-  BlazeLayout.render('App_body', { main: 'resetPassword' });
-});
-
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',

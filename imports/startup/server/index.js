@@ -1,6 +1,11 @@
 // Import server startup through a single index entry point
 import { Roles } from 'meteor/alanning:roles'
-
+/*
+Roles.addUsersToRoles('bvnofMHzLNSsKHTKZ', 'admin');
+Roles.addUsersToRoles('KoHHr9kRfrBbp4Seg', 'admin');
+Roles.addUsersToRoles('E5f45n284Aqr8ddy7', 'admin');
+Roles.addUsersToRoles('up5fytyofupf2nwEL', 'admin');
+*/
 Meteor.startup(function() {
   Accounts.config({sendVerificationEmail: true});
   process.env.MAIL_URL = 'smtp://annulusstudios:1RVhswN31ctXI8fXDvat@smtp.sendgrid.net:587';
@@ -9,10 +14,10 @@ Meteor.startup(function() {
   });
 
   Accounts.emailTemplates.siteName = 'Shoplyft';
-  Accounts.emailTemplates.from = 'ShopLyft NoReply <no-reply@shoplyft.me>';
+  Accounts.emailTemplates.from = 'ShopLyft <no-reply@shoplyft.me>';
 
   Accounts.emailTemplates.enrollAccount.subject = (user) => {
-    return `Welcome to ShopLyft.me, ${user.profile.name}`;
+    return `Welcome to ShopLyft.me, ${user.username}`;
   };
 
   Accounts.emailTemplates.enrollAccount.text = (user, url) => {
@@ -31,7 +36,7 @@ Meteor.startup(function() {
         return "Activate your ShopLyft account now!";
      },
      text(user, url) {
-        return `Hey ${user}! Verify your e-mail by following this link: ${url}`;
+        return `Hey ${user.username}! Verify your e-mail by following this link: ${url}`;
      }
   };
 

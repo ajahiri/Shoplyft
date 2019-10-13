@@ -14,7 +14,7 @@ Template.viewCustomers.helpers({
       return Meteor.users.find({});
     } else {
       return Meteor.users.find({
-        username: { $regex: username.get() },
+        username: { $regex: username.get(), $options: 'i' },
       });
     }
   }
