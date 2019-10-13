@@ -6,11 +6,11 @@
           <div class="row">
             <div class="col s12 m4 offset-m1 align-left">
               <div class="card-panel grey lighten-4">
-                  <a class="modal-trigger blue-text right" href="#updateModal">Update</a>
+                  <a class="modal-trigger blue-text right" href="#updateModal">Update Email</a>
                   <i class="material-icons large blue-text">account_circle</i>
-                  <h4 class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4>
+                  <h4 id="username" class="username"><span class="blue-text">Username: </span>{{getUsername}}</h4>
                   <div class=divider></div>
-                  <div class="section"><h4 class="email"><span class="blue-text">Email: </span><span class="flow-text">{{getEmail}}</span></h4></div>
+                  <div id="email" class="section"><h5 class="email"><span class="blue-text">Email: </span>{{getEmail}}</h5></div>
                   <div class=divider></div>
                   <div class="section">
                     <span class="blue-text">
@@ -31,7 +31,7 @@
                       {{/unless}}
                   {{/if}}
                   {{#if isInRole 'seller'}}
-                      <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div> <!-- THIS IS getBranch FOR TESTING -->
+                      <div class="section"><h4><span class="blue-text">Role: </span>{{getRoles}}</h4></div>
                       <div class=divider></div>
                       {{#if hasBranch}}
                           <div class="section"><h4><span class="blue-text">Branch: </span>{{getBranch}}</h4></div>
@@ -61,6 +61,21 @@
                 <button type="submit" form="changePasswordForm" class="row col s12 blue waves-effect waves-light btn">Change Password</button>
               </form>
             </div>
+            <!-- Billing Details -->
+            {{#if getBillingName}}
+              <div>
+                <div class="section"></div>
+                <h3>Billing Details</h3>
+                <div class="divider"></div>
+                <h4 class='blue-text'>Name: <span class='black-text'>{{getBillingName}}</span></h4>
+                <h4 class='blue-text'>Phone: <span class='black-text'>{{getBillingPhone}}</span></h4>
+                <h4 class='blue-text'>Street: <span class='black-text'>{{getBillingStreet}}</span></h4>
+                <h4 class='blue-text'>City: <span class='black-text'>{{getBillingCity}}</span></h4>
+                <h4 class='blue-text'>State: <span class='black-text'>{{getBillingState}}</span></h4>
+                <h4 class='blue-text'>Country: <span class='black-text'>{{getBillingCountry}}</span></h4>
+                <h4 class='blue-text'>Zip: <span class='black-text'>{{getBillingZip}}</span></h4>
+              </div>
+            {{/if}}
           </div>
         </div>
 
@@ -91,11 +106,17 @@
         <!-- Modal Structure start-->
         <div id="updateModal" class="modal">
           <div class="modal-content">
-            <h4>Update Details</h4>
-            <p>Text</p>
+            <form id='modalSaveForm'>
+              <h4>Update Email</h4>
+              <div class="input-field col s6">
+                <input name="newEmail" type="text" required class="validate">
+                <label for="newEmail">New Email</label>
+                <input type='submit' value='Save' class="blue waves-effect waves-light btn">
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Done</a>
           </div>
         </div>
         <!-- Modal Structure end-->

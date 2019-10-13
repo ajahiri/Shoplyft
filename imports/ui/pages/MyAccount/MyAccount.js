@@ -41,18 +41,49 @@ Template.App_MyAccount.events({
     } catch (e) {
       M.toast({html: e});
     }
+  },
+  'submit #modalSaveForm': function(event) {
+    event.preventDefault();
+    var newEmail = event.target.newEmail.value;
+    if (newEmail == Meteor.user().emails[0].address)
+    {
+      M.toast({html: "Email is already assigned."})
+      event.target.reset();
+    } else {
+      Meteor.call('replaceEmail', newEmail, function(error) {
+        if (error) {
+          M.toast({html: error});
+        } else {
+          event.target.reset();
+          M.toast({html: "Successfully changed email!"});
+          instance.close();
+
+        }
+      });
+    }
   }
 });
 
 Template.App_MyAccount.helpers({
+    getUserId() {
+      return Meteor.user()._id;
+    },
     getUsername() {
         return Meteor.user().username;
     },
     getEmail() {
+      try {
         return Meteor.user().emails[0].address;
+      } catch (e) {
+        return null;
+      }
     },
     verified() {
+      try {
         return Meteor.user().emails[0].verified;
+      } catch (e) {
+        return false;
+      }
     },
     getRoles() {
         if (Meteor.user().roles) {
@@ -73,13 +104,40 @@ Template.App_MyAccount.helpers({
       }
 
     },
-    //Will check if user has an allocatedBranch attribute.
+    //Checks if user has an allocatedBranch attribute.
     hasBranch() {
       if (Meteor.user().allocatedBranch) {
         return true;
       } else {
         return false;
       }
+    },
+    //Checks if user has Billing Info, and sends name if true
+    getBillingName()
+    {
+      if(Meteor.user().billingInfo.fullName){
+        return Meteor.user().billingInfo.fullName;
+      } else {
+        return false;
+      }
+    },
+    getBillingPhone() {
+      return Meteor.user().billingInfo.phone;
+    },
+    getBillingStreet() {
+      return Meteor.user().billingInfo.street;
+    },
+    getBillingCity() {
+      return Meteor.user().billingInfo.city;
+    },
+    getBillingState() {
+      return Meteor.user().billingInfo.state;
+    },
+    getBillingCountry() {
+      return Meteor.user().billingInfo.country;
+    },
+    getBillingZip() {
+      return Meteor.user().billingInfo.zip;
     }
 });
 
