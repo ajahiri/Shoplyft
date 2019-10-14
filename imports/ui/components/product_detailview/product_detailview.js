@@ -3,6 +3,7 @@ import { Products } from '../../../api/branches/branches.js';
 import { Branches } from '../../../api/branches/branches.js';
 
 Template.productBody.onRendered(function(){
+  $('html,body').scrollTop(0);
   var elems = document.querySelectorAll('.materialboxed');
   var instances = M.Materialbox.init(elems);
   var elems = document.querySelectorAll('.modal');
