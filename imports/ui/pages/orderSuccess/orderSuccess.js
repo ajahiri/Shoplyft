@@ -56,12 +56,31 @@ Template.recommendation.helpers({
     recommendedProducts() {
         var commonCategory; 
         try {
+            Array.prototype.inArray = function(comparer) { 
+                for(var i=0; i < this.length; i++) { 
+                    if(comparer(this[i])) return true; 
+                }
+                return false; 
+            }; 
+            
+            // adds an element to the array if it does not already exist using a comparer 
+            // function
+            Array.prototype.pushIfNotExist = function(element, comparer) { 
+                if (!this.inArray(comparer)) {
+                    this.push(element);
+                }
+            }; 
             commonCategory = findMode(consolidateCategories());
             var recommendationArray = Products.find({category: commonCategory}).fetch();
             var recommendationResults = [];
-            for(i = 0; i < 4; i++) {
+            //Will keep going until the system gives us 4 random AND UNIQUE recommendation of products.
+            //This will keep the system from displaying only 2 or less than 4 products.
+            //This will also ensure, that, if for some reason, there are less than 4 products in a particular category, it will not display recommendations at all.
+            while (recommendationResults.length < 4 && recommendationArray.length > 4) {
               var randomIndex = Math.floor( Math.random() * recommendationArray.length );
-              recommendationResults.push(recommendationArray[randomIndex]);
+              recommendationResults.pushIfNotExist(recommendationArray[randomIndex], function(e) { 
+                  return e._id === recommendationArray[randomIndex]._id; 
+              });
             }
         } catch (e) {};
 

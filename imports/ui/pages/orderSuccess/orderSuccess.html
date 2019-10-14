@@ -21,9 +21,14 @@
 
 <template name="recommendation">
   <div class="row">
-    <h5>Recommended for you:</h5>
-    {{#each recommendedProducts}}
-      {{> productItem}}
-    {{/each}}
+    <h5>Recommended products for you:</h5>
+    {{#if recommendedProducts}}
+      {{#each recommendedProducts}}
+        {{> productItem}}
+      {{/each}}
+    {{else}}
+      <h5 class="center">Sorry, there aren't enough products in this category to give you any recommendations.</h5>
+    {{/if}}
+    
   </div>
 </template>
