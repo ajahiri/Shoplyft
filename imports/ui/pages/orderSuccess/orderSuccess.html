@@ -14,6 +14,21 @@
         </div>
       </div>
     </div>
+    <div class='section'></div>
+      {{> recommendations}}
   </main>
   {{>footer}}
+</template>
+
+<template name="recommendedProducts">
+  {{#each recommendedProducts}}
+    {{> recommendations}}
+  {{/each}}
+</template>
+
+<template name="recommendations">
+  <div class="carousel">
+    <a class="carousel-item" href="/products/{{recommendationId}}"><img src="{{imageURL}}"></a>
+  <!-- The href is not recognising {{recommendedId}} and src is not recognising {{imageURL}}  -->
+  </div>
 </template>
