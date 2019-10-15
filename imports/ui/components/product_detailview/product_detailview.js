@@ -68,6 +68,7 @@ Template.productBody.events({
         M.toast({html: error.reason});
       } else {
         M.toast({html: 'Product deleted from site!'});
+        FlowRouter.go('/');
       }
     });
   },
