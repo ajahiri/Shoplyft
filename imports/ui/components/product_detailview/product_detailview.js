@@ -1,6 +1,7 @@
 import './product_detailview.html';
 import { Products } from '../../../api/branches/branches.js';
 import { Branches } from '../../../api/branches/branches.js';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.productBody.onRendered(function(){
   $('html,body').scrollTop(0);
@@ -68,7 +69,8 @@ Template.productBody.events({
       if (error) {
         M.toast({html: error.reason});
       } else {
-        Flowrouter.go('/');
+        $('.modal').modal('close');
+        FlowRouter.go('App.home');
         M.toast({html: 'Product deleted from site!'});
       }
     });
