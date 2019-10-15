@@ -29,7 +29,7 @@ function consolidateCategories() {
             }
         });
     });
-
+    
     return categoriesRaw;
 }
 
@@ -45,7 +45,7 @@ function findMode(array) {
     }, {});
 
     let mode = Object.keys(counted).reduce((a, b) => counted[a] > counted[b] ? a : b);
-
+    
     return mode;
 }
 
@@ -72,18 +72,23 @@ Template.recommendation.helpers({
             }; 
             commonCategory = findMode(consolidateCategories());
             var recommendationArray = Products.find({category: commonCategory}).fetch();
+            
             var recommendationResults = [];
             //Will keep going until the system gives us 4 random AND UNIQUE recommendation of products.
             //This will keep the system from displaying only 2 or less than 4 products.
             //This will also ensure, that, if for some reason, there are less than 4 products in a particular category, it will not display recommendations at all.
-            while (recommendationResults.length < 4 && recommendationArray.length > 4) {
-              var randomIndex = Math.floor( Math.random() * recommendationArray.length );
-              recommendationResults.pushIfNotExist(recommendationArray[randomIndex], function(e) { 
-                  return e._id === recommendationArray[randomIndex]._id; 
-              });
+            if (recommendationArray.length >= 4) {
+                while (recommendationResults.length < 4) {
+                    var randomIndex = Math.floor( Math.random() * recommendationArray.length );
+                    recommendationResults.pushIfNotExist(recommendationArray[randomIndex], function(e) { 
+                        return e._id === recommendationArray[randomIndex]._id; 
+                    });
+                }
             }
-        } catch (e) {};
-
-        return recommendationResults;
+            
+            return recommendationResults;
+        } catch (e) {
+            return null;
+        };
     }, 
 });
