@@ -68,6 +68,7 @@ Template.productBody.events({
       if (error) {
         M.toast({html: error.reason});
       } else {
+        Flowrouter.go('/');
         M.toast({html: 'Product deleted from site!'});
       }
     });
