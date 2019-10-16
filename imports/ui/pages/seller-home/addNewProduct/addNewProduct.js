@@ -31,6 +31,7 @@ Template.uploadForm.onCreated(function() {
 });
 
 Template.addNewProduct.onRendered(function() {
+  $('html,body').scrollTop(0);
   $('input#input_text, textarea#item_description').characterCounter();
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);

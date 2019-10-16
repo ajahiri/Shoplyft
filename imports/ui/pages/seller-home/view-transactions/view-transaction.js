@@ -2,6 +2,9 @@ import './view-transactions.html';
 import { Branches } from '../../../../api/branches/branches.js';
 import { Orders } from '../../../../api/orders/orders.js';
 
+Template.sellerTransactions.onRendered(function() {
+  $('html,body').scrollTop(0);
+});
 
 Template.sellerTransactions.onCreated(function() {
   Meteor.subscribe('userData');

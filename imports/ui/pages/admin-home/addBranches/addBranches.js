@@ -1,6 +1,7 @@
 import './addBranches.html';
 
 Template.addBranches.onRendered(function() {
+  $('html,body').scrollTop(0);
   var elems = document.querySelectorAll('select');
   var instances = M.FormSelect.init(elems);
 })

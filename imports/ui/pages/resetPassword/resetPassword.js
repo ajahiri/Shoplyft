@@ -2,6 +2,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import './resetPassword.html';
 
+Template.resetPassword.onRendered(function() {
+  $('html,body').scrollTop(0);
+});
+
 Template.resetPassword.events({
   'submit #newPassword'(event){
     event.preventDefault();

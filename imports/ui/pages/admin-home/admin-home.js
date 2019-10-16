@@ -11,6 +11,10 @@ import './view-customers/view-customers.js';
 // Add Sellers
 import './add-seller/add-seller.js';
 
+Template.App_adminHome.onRendered(function() {
+  $('html,body').scrollTop(0);
+});
+
 FlowRouter.route('/admin-home/view-branches', {
   name: 'App.admin-home.view-branches',
   action() {

@@ -1,9 +1,17 @@
 <template name="product_detailview">
   {{>navigation}}
   <main>
+    {{#unless productExists}}
+      <div class="container">
+        <div class="row col s12">
+          <h5 class="center">Sorry, this product no longer exists. Return <a href="/">Home</a>?</h5>
+        </div>
+      </div>
+    {{else}}
       {{#each product}}
         {{>productBody}}
       {{/each}}
+    {{/unless}}
   </main>
   {{> footer}}
 </template>

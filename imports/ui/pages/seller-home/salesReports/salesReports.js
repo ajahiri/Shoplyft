@@ -51,6 +51,7 @@ function calculateStatistics(orders) {
 }
 
 Template.salesReports.onRendered(function() {
+  $('html,body').scrollTop(0);
   var elems = document.querySelectorAll('.fixed-action-btn');
   var instances = M.FloatingActionButton.init(elems);
 });

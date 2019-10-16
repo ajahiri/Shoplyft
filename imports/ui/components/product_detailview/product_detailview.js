@@ -21,6 +21,13 @@ Template.product_detailview.helpers({
   product() {
     return Products.find({_id: FlowRouter.getParam('_id')});
   },
+  productExists() {
+    if (Products.findOne({_id: FlowRouter.getParam('_id')})) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 });
 
 Template.productBody.helpers({

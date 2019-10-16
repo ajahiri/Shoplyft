@@ -6,6 +6,10 @@ import './addNewProduct/addNewProduct.js';
 //Sales salesReports
 import './salesReports/salesReports.js';
 
+Template.App_sellerHome.onRendered(function() {
+  $('html,body').scrollTop(0);
+});
+
 FlowRouter.route('/seller-home/add-new-product', {
   name: 'App.seller-home.add-new-product',
   action() {

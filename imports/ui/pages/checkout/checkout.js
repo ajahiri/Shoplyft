@@ -4,6 +4,7 @@ import '../../components/dropdown/dropdown.js';
 var isLoading = new ReactiveVar(false);
 
 Template.billing_Info.onRendered(function() {
+  $('html,body').scrollTop(0);
   M.updateTextFields();
 });
 

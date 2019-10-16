@@ -25,6 +25,12 @@ Template.completeUserList.events({
     event.preventDefault();
     var user = template.data._id;
 
-    Meteor.call('deleteUser', user);
+    Meteor.call('deleteUser', user, (error, result) => {
+      if (error) {
+        M.toast({html: error});
+      } else {
+        M.toast({html: 'Successfully deleted user.'});
+      }
+    });
   },
 });

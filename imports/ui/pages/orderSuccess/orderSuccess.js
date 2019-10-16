@@ -10,6 +10,9 @@ Template.orderSuccess.onCreated(function() {
     Meteor.subscribe('productList');
 });
 
+Template.orderSuccess.onRendered(function() {
+    $('html,body').scrollTop(0);
+});
 
 function consolidateCategories() {
     var userOrders = Orders.find({owner: Meteor.userId()});

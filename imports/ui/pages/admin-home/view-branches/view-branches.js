@@ -6,6 +6,24 @@ Template.viewBranches.onCreated(function() {
     Meteor.subscribe('userList');
 });
 
+Template.viewBranches.onRendered(function() {
+  $('html,body').scrollTop(0);
+});
+
+Template.branchData.events({
+  'click #deleteBranch'(event, template) {
+    event.preventDefault();
+    var branchID = template.data._id;
+    Meteor.call('deleteBranch', branchID, (error) => {
+      if (error) {
+        M.toast({html: error});
+      } else {
+        M.toast({html: 'Successfully deleted branch and associated products.'});
+      }
+    });
+  }
+});
+
 Template.viewBranches.helpers({
   branches() {
     return Branches.find({});

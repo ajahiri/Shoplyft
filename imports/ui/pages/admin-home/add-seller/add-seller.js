@@ -6,6 +6,10 @@ Template.addSeller.onCreated(function() {
   Meteor.subscribe('branchesAdmin');
 });
 
+Template.addSeller.onRendered(function() {
+  $('html,body').scrollTop(0);
+});
+
 var username = new ReactiveVar();//Initialize the search parameter
 
 Template.addSeller.helpers({

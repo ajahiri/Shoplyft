@@ -7,8 +7,8 @@ Roles.addUsersToRoles('E5f45n284Aqr8ddy7', 'admin');
 Roles.addUsersToRoles('up5fytyofupf2nwEL', 'admin');
 */
 Meteor.startup(function() {
-  Accounts.config({sendVerificationEmail: false});
-  process.env.MAIL_URL = 'smtp://annulusstudios:1RVhswN31ctXI8fXDvat@smtp.sendgrid.net:587';
+  Accounts.config({sendVerificationEmail: true});
+  process.env.MAIL_URL = 'smtp://apikey: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@smtp.sendgrid.net:587';
 
   Accounts.emailTemplates.siteName = 'Shoplyft';
   Accounts.emailTemplates.from = 'ShopLyft <no-reply@shoplyft.me>';

@@ -4,6 +4,7 @@ import { Branches } from '../../../api/branches/branches.js';
 import { Orders } from '../../../api/orders/orders.js';
 
 Template.App_MyAccount.onRendered(function(){
+  $('html,body').scrollTop(0);
   var elems = document.querySelectorAll('.modal');
   var instances = M.Modal.init(elems);
 });
