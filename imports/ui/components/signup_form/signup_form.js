@@ -24,7 +24,7 @@ Template.signup_form.events({
     }
 
     try {
-      if (password != confPxassword) {
+      if (password != confPassword) {
         throw new Error("Passwords don't match!");
       }
       Accounts.createUser(

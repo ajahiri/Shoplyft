@@ -1,8 +1,10 @@
 import './product_detailview.html';
 import { Products } from '../../../api/branches/branches.js';
 import { Branches } from '../../../api/branches/branches.js';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 Template.productBody.onRendered(function(){
+  $('html,body').scrollTop(0);
   var elems = document.querySelectorAll('.materialboxed');
   var instances = M.Materialbox.init(elems);
   var elems = document.querySelectorAll('.modal');
@@ -67,6 +69,8 @@ Template.productBody.events({
       if (error) {
         M.toast({html: error.reason});
       } else {
+        $('.modal').modal('close');
+        FlowRouter.go('App.home');
         M.toast({html: 'Product deleted from site!'});
         FlowRouter.go('/');
       }

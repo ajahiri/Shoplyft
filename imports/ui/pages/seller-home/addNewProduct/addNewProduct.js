@@ -55,14 +55,20 @@ Template.addNewProduct.events({
     const category = target.categorySelector.value;
     const description = target.item_description.value;
     const promotionalBool = $('#promoCheck').is(':checked');
-
-    //Check if file has been uploaded
+    try {
+      //Check if file has been uploaded
     if (!imageID) {
-      throw new Meteor.Error('No image.', 'Error: No image has been uplaoded for this product.');
+      throw new Meteor.Error('No image.', 'No image has been uplaoded for this product.');
+    } else if (!productName) {
+      throw new Meteor.Error('Logic error.', 'Invalid product name.');
     } else if (stock <= 0) {
-      throw new Meteor.Error('Logic error.', 'Error: Invalid stock amount.');
+      throw new Meteor.Error('Logic error.', 'Invalid stock amount.');
     } else if (description.length > 1000) {
-      throw new Meteor.Error('Logic error.', 'Error: Description is too long.');
+      throw new Meteor.Error('Logic error.', 'Description is too long.');
+    } else if (!category) {
+      throw new Meteor.Error('Logic error.', 'No category selected.');
+    } else if (!price || price == 0) {
+      throw new Meteor.Error('Logic error.', 'Invalid price.');
     } else {
       //Call method to add new product
       Meteor.call('addNewProduct.addProduct', {
@@ -76,7 +82,7 @@ Template.addNewProduct.events({
         promoBool: promotionalBool
       }, (err, res) => {
         if (err) {
-          M.toast({html: 'Unable to add new Product. Error: ' + err.reason});
+          M.toast({html: 'Unable to add new Product. ' + err.reason});
         } else {
           //success
           target.reset();
@@ -86,6 +92,10 @@ Template.addNewProduct.events({
         }
       });
     }
+    } catch(e) {
+      M.toast({html: e});
+    }
+    
   }
 });
 

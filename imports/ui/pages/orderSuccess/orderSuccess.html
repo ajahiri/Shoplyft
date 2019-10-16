@@ -2,32 +2,33 @@
   {{>navigation}}
   <main>
     <div class="container">
-      <div class=" row col s12">
-        <div class="center card-panel grey lighten-3">
+      <div class="row col s12">
+        <div id="paymentSuccess" class="center card-panel grey lighten-3">
           <div>
             <i class="blue-text material-icons large">done</i>
-            <h3 class="blue-text">Your payment's gone through!</h3>
+            <h3 class="blue-text">Your payment was successful!</h3>
             <h6>Keep an eye on your inbox, you'll be getting a confirmation email from us soon,
-                in the mean time look at our recommendations for you!
+                in the mean time, have a look at our recommendations for you!
            </h6>
           </div>
         </div>
       </div>
+      {{>recommendation}}
     </div>
-    {{>recommendation}}
   </main>
   {{>footer}}
 </template>
 
 <template name="recommendation">
   <div class="row">
-   <div class =" center card-panel grey lighten-3">
-     <h2 class="blue-text">
-       You may also like:
-     </h2>
-   </div>
-    {{#each recommendation}}
-      {{> productItem}}
-    {{/each}}
+    <h5>Recommended products for you:</h5>
+    {{#if recommendedProducts}}
+      {{#each recommendedProducts}}
+        {{> productItem}}
+      {{/each}}
+    {{else}}
+      <h5 class="center">Sorry, there aren't enough products in this category to give you any recommendations.</h5>
+    {{/if}}
+    
   </div>
 </template>
