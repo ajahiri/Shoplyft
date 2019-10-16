@@ -19,3 +19,11 @@ Template.completeUserList.helpers({
     return moment(date).format("DD-MM-YYYY");
   }
 });
+
+Template.completeUserList.events({
+  'click #deleteUser'(event, template) {
+    console.log(template.data);
+    
+    //Meteor.call('deleteUser',)
+  },
+});

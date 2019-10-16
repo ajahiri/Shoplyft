@@ -27,4 +27,19 @@ Meteor.methods({
       return new Error('Not authorised!');
     }
   },
+  'deleteUser'({userId}) {
+    new SimpleSchema({
+      userId: { type: String },
+    }).validate({ userId });
+
+    if (Roles.userIsInRole(this.userId, 'admin')) {
+      Meteor.users.remove({ _id: userId }, function(error, result) {
+        if (error) {
+          new Error('Error removing user.');
+        }
+    });
+    } else {
+      return new Error('Not authorised!');
+    }
+  },
 });
