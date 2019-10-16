@@ -79,9 +79,6 @@ Template.salesReports.helpers({
     var ordersToProcess = Orders.find({createdAt:{$gte: moment().subtract(FlowRouter.getParam('saleTime'), "days").toDate(), $lt: moment().toDate()}}, { sort: { createdAt: -1 } });
     var calcResults = calculateStatistics(ordersToProcess);
     return calcResults;
-  },
-  currDate() {
-    return moment();
   }
 });
 

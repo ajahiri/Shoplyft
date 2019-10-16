@@ -7,7 +7,7 @@ Roles.addUsersToRoles('E5f45n284Aqr8ddy7', 'admin');
 Roles.addUsersToRoles('up5fytyofupf2nwEL', 'admin');
 */
 Meteor.startup(function() {
-  Accounts.config({sendVerificationEmail: true});
+  Accounts.config({sendVerificationEmail: false});
   process.env.MAIL_URL = 'smtp://annulusstudios:1RVhswN31ctXI8fXDvat@smtp.sendgrid.net:587';
 
   Accounts.emailTemplates.siteName = 'Shoplyft';

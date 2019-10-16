@@ -22,8 +22,9 @@ Template.completeUserList.helpers({
 
 Template.completeUserList.events({
   'click #deleteUser'(event, template) {
-    console.log(template.data);
-    
-    //Meteor.call('deleteUser',)
+    event.preventDefault();
+    var user = template.data._id;
+
+    Meteor.call('deleteUser', user);
   },
 });

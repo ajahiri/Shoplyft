@@ -27,7 +27,7 @@ Meteor.methods({
       return new Error('Not authorised!');
     }
   },
-  'deleteUser'({userId}) {
+  'deleteUser'(userId) {
     new SimpleSchema({
       userId: { type: String },
     }).validate({ userId });
