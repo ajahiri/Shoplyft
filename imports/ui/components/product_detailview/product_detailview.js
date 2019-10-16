@@ -72,7 +72,6 @@ Template.productBody.events({
         $('.modal').modal('close');
         FlowRouter.go('App.home');
         M.toast({html: 'Product deleted from site!'});
-        FlowRouter.go('/');
       }
     });
   },
