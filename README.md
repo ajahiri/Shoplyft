@@ -2,6 +2,8 @@
 
 ## Group 4
 
+Video Walkthrough:
+https://youtu.be/bps_mZaqB7c
 
 ## Focus and scope
 For this project we are tasked to make an online shopping website for a computer device company. Since the company have several branches, the website will sell various goods as requested by the company.
