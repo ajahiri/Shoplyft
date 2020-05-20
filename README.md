@@ -18,13 +18,13 @@ Given requirements:
 
 Project Leader/Scrum Master  - Aneesh Kondaparthi
 
+Lead Developer - Arian J
+
 Developer & Security - Andy Lee 
 
 Developer & Testing - Nathan Ibarcena
 
 Developer - Lucky Jaiswal
-
-Developer - Arian J
 
 UX/UI Designer & Documentation - Anjali Kalambe
 
